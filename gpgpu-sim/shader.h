@@ -626,19 +626,38 @@ private:
 
    class allocation_t {
    public:
-      allocation_t() { m_allocation = NO_ALLOC; }
+      allocation_t() { m_allocation = NO_ALLOC; step_left_to_finish = 0; }
       bool is_read() const { return m_allocation==READ_ALLOC; }
       bool is_write() const {return m_allocation==WRITE_ALLOC; }
       bool is_free() const {return m_allocation==NO_ALLOC; }
+      int step_left_to_finish;
       void dump(FILE *fp) const {
          if( m_allocation == NO_ALLOC ) { fprintf(fp,"<free>"); }
-         else if( m_allocation == READ_ALLOC ) { fprintf(fp,"rd: "); m_op.dump(fp); }
-         else if( m_allocation == WRITE_ALLOC ) { fprintf(fp,"wr: "); m_op.dump(fp); }
+         else if( m_allocation == READ_ALLOC ) { fprintf(fp,"rd: %d", step_left_to_finish); m_op.dump(fp); }
+         else if( m_allocation == WRITE_ALLOC ) { fprintf(fp,"wr: %d", step_left_to_finish); m_op.dump(fp); }
          fprintf(fp,"\n");
       }
-      void alloc_read( const op_t &op )  { assert(is_free()); m_allocation=READ_ALLOC; m_op=op; }
-      void alloc_write( const op_t &op ) { assert(is_free()); m_allocation=WRITE_ALLOC; m_op=op; }
-      void reset() { m_allocation = NO_ALLOC; }
+      void alloc_read( const op_t &op, int k )  {
+            assert(is_free()); 
+            m_allocation=READ_ALLOC; 
+            step_left_to_finish = k-1;
+            m_op=op; 
+        }
+      bool finished()
+      {
+            return step_left_to_finish==0;       
+      }
+      void dec_step()
+      {
+            step_left_to_finish--;
+      }
+      void alloc_write( const op_t &op, int k ) { 
+            assert(is_free()); 
+            m_allocation=WRITE_ALLOC; 
+            step_left_to_finish = k-1;
+            m_op=op; 
+        }
+      void reset() { m_allocation = NO_ALLOC; step_left_to_finish = 0; }
    private:
       enum alloc_t m_allocation;
       op_t m_op;
@@ -716,20 +735,39 @@ private:
       {
           return m_allocated_bank[bank].is_free();
       }
-      void allocate_bank_for_write( unsigned bank, const op_t &op )
+      bool allocate_bank_for_write( unsigned bank, const op_t &op )
       {
          assert( bank < m_num_banks );
-         m_allocated_bank[bank].alloc_write(op);
+         if( m_allocated_bank[bank].is_free() )
+         {
+            m_allocated_bank[bank].alloc_write(op, 2);
+         }
+         else
+         {
+            m_allocated_bank[bank].dec_step();
+         }
+         return m_allocated_bank[bank].finished();
       }
-      void allocate_for_read( unsigned bank, const op_t &op )
+      bool allocate_for_read( unsigned bank, const op_t &op )
       {
          assert( bank < m_num_banks );
-         m_allocated_bank[bank].alloc_read(op);
+         if( m_allocated_bank[bank].is_free() )
+         {
+            m_allocated_bank[bank].alloc_read(op, 2);
+         }
+         else
+         {
+            m_allocated_bank[bank].dec_step();
+         }
+         return m_allocated_bank[bank].finished();
       }
       void reset_alloction()
       {
          for( unsigned b=0; b < m_num_banks; b++ ) 
-            m_allocated_bank[b].reset();
+         {
+            if( m_allocated_bank[b].finished() )
+                m_allocated_bank[b].reset();
+         }
       }
 
    private:

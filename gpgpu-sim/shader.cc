@@ -1251,7 +1251,8 @@ void shader_core_ctx::writeback()
     	 * To handle this case, we ignore the return value (thus allowing
     	 * no stalling).
     	 */
-        m_operand_collector.writeback(*pipe_reg);
+        bool ok = m_operand_collector.writeback(*pipe_reg);
+        if( !ok ) continue;
         unsigned warp_id = pipe_reg->warp_id();
         m_scoreboard->releaseRegisters( pipe_reg );
         m_warp[warp_id].dec_inst_in_pipeline();
@@ -2884,7 +2885,8 @@ bool opndcoll_rfu_t::writeback( const warp_inst_t &inst )
       unsigned reg = *r;
       unsigned bank = register_bank(reg,inst.warp_id(),m_num_banks,m_bank_warp_shift);
       if( m_arbiter.bank_idle(bank) ) {
-          m_arbiter.allocate_bank_for_write(bank,op_t(&inst,reg,m_num_banks,m_bank_warp_shift));
+          bool ok = m_arbiter.allocate_bank_for_write(bank,op_t(&inst,reg,m_num_banks,m_bank_warp_shift));
+          if( !ok ) return false;
       } else {
           return false;
       }
@@ -2977,9 +2979,11 @@ void opndcoll_rfu_t::allocate_reads()
       unsigned reg = rr.get_reg();
       unsigned wid = rr.get_wid();
       unsigned bank = register_bank(reg,wid,m_num_banks,m_bank_warp_shift);
-      m_arbiter.allocate_for_read(bank,rr);
-      read_ops[bank] = rr;
+      bool ok = m_arbiter.allocate_for_read(bank,rr);
+      if( ok ) read_ops[bank] = rr;
    }
+
+   //begin retrieve the gotten operands
    std::map<unsigned,op_t>::iterator r;
    for(r=read_ops.begin();r!=read_ops.end();++r ) {
       op_t &op = r->second;
