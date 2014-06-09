@@ -54,10 +54,8 @@
 #include "gpu-cache.h"
 #include "traffic_breakdown.h"
 
-
-#define READ_OPERAND_CYCLE      2
 #define WRITE_OPERAND_CYCLE      2
-
+#define READ_OPERAND_CYCLE      2
 
 #define NO_OP_FLAG            0xFF
 
@@ -644,14 +642,20 @@ private:
         assert(is_free()); 
         m_allocation=READ_ALLOC; 
         m_op=op; 
-        step_to_go = k-1;
+        step_to_go = k;
     }
-      void alloc_write( const op_t &op ) { 
+      void alloc_write( const op_t &op, int k ) { 
         assert(is_free()); 
         m_allocation=WRITE_ALLOC;
          m_op=op; 
+         step_to_go = k;
      }
-      void reset() { m_allocation = NO_ALLOC; step_to_go = 0; }
+      void reset() { 
+        step_to_go--;
+        if( step_to_go==0 ) {
+         m_allocation = NO_ALLOC; 
+        }
+    }
       bool op_t_same_to( const op_t& obj )
       {
             int k=0;
@@ -663,10 +667,11 @@ private:
             k+= m_op.m_bank==obj.m_bank;
             return k==6;
       }
-      bool is_finished() { return step_to_go==0 && !is_free(); }
+      bool is_finished() { return step_to_go==1; }
    private:
       enum alloc_t m_allocation;
       op_t m_op;
+   public:
       int step_to_go;
    };
 
@@ -683,12 +688,13 @@ private:
          _request=NULL;
          m_last_cu=0;
       }
-      void init( unsigned num_cu, unsigned num_banks ) 
+      void init( unsigned num_cu, unsigned num_banks, std::map<int, unsigned> latencies ) 
       { 
          assert(num_cu > 0);
          assert(num_banks > 0);
          m_num_collectors = num_cu;
          m_num_banks = num_banks;
+         reg_latencies = latencies;
          _inmatch = new int[ m_num_banks ];
          _outmatch = new int[ m_num_collectors ];
          _request = new int*[ m_num_banks ];
@@ -701,7 +707,17 @@ private:
             m_allocator_rr_head[n] = n%num_banks;
          reset_alloction();
       }
-
+      bool is_writing(unsigned bank, const op_t& obj)
+      {
+        if( m_allocated_bank[bank].is_write() ) {
+            if( m_allocated_bank[bank].op_t_same_to(obj) )  return true;
+        } 
+        return false;
+      }
+      bool is_finished(unsigned bank)
+      {
+            return m_allocated_bank[bank].is_finished();
+      }
       // accessors
       void dump(FILE *fp) const
       {
@@ -746,19 +762,29 @@ private:
       {
           return m_allocated_bank[bank].is_free();
       }
-      void allocate_bank_for_write( unsigned bank, const op_t &op )
+      bool allocate_bank_for_write( unsigned bank, const op_t &op )
       {
          assert( bank < m_num_banks );
-         m_allocated_bank[bank].alloc_write(op);
+         m_allocated_bank[bank].alloc_write(op, WRITE_OPERAND_CYCLE);
+         return m_allocated_bank[bank].is_finished();
+      }
+      bool dec_write_step(unsigned bank)
+      {
+        m_allocated_bank[bank].dec_step();
+        return m_allocated_bank[bank].is_finished();
+      }
+      void reset_bank_for_write(unsigned bank)
+      {
+        m_allocated_bank[bank].reset();
       }
       bool allocate_for_read( unsigned bank, const op_t &op )
       {
          assert( bank < m_num_banks );
          if( m_allocated_bank[bank].is_free() ) {
-            m_allocated_bank[bank].alloc_read(op, READ_OPERAND_CYCLE);
+            m_allocated_bank[bank].alloc_read(op, reg_latencies[bank]);
         } else {
-            if( m_allocated_bank[bank].is_read() && m_allocated_bank[bank].op_t_same_to(op) ) {
-                    m_allocated_bank[bank].dec_step();
+            if( m_allocated_bank[bank].op_t_same_to(op) ) {
+                    if( !m_allocated_bank[bank].is_finished() ) return false;
             } else {
                 return false;
             }
@@ -768,7 +794,7 @@ private:
       void reset_alloction()
       {
          for( unsigned b=0; b < m_num_banks; b++ ) 
-            if( m_allocated_bank[b].is_finished() ) m_allocated_bank[b].reset();
+            if( !m_allocated_bank[b].is_free() ) m_allocated_bank[b].reset();
       }
 
    private:
@@ -784,6 +810,8 @@ private:
       int *_inmatch;
       int *_outmatch;
       int **_request;
+
+      std::map<int, unsigned> reg_latencies;
    };
 
    class input_port_t {

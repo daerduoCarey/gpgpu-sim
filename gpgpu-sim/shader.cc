@@ -2851,7 +2851,21 @@ void opndcoll_rfu_t::add_port(port_vector_t & input, port_vector_t & output, uin
 void opndcoll_rfu_t::init( unsigned num_banks, shader_core_ctx *shader )
 {
    m_shader=shader;
-   m_arbiter.init(m_cu.size(),num_banks);
+   std::map<int, unsigned> latencies;
+   FILE *fp = fopen("latency.setup","r");
+   int bank=0, tmp;
+   while(fscanf(fp,"%d",&tmp)==1)
+   {
+      latencies[bank]=tmp;
+      ++bank;
+   }
+   if(bank==0) tmp=READ_OPERAND_CYCLE;
+   for(unsigned i=bank;i<num_banks;++i) {
+      latencies[i]=tmp;
+    }
+
+   m_arbiter.init(m_cu.size(),num_banks,latencies);
+
    //for( unsigned n=0; n<m_num_ports;n++ ) 
    //    m_dispatch_units[m_output[n]].init( m_num_collector_units[n] );
    m_num_banks = num_banks;
@@ -2884,7 +2898,10 @@ bool opndcoll_rfu_t::writeback( const warp_inst_t &inst )
       unsigned reg = *r;
       unsigned bank = register_bank(reg,inst.warp_id(),m_num_banks,m_bank_warp_shift);
       if( m_arbiter.bank_idle(bank) ) {
-          m_arbiter.allocate_bank_for_write(bank,op_t(&inst,reg,m_num_banks,m_bank_warp_shift));
+          bool ok = m_arbiter.allocate_bank_for_write(bank,op_t(&inst,reg,m_num_banks,m_bank_warp_shift));
+          if(!ok) return false;
+      } else if( m_arbiter.is_writing(bank, op_t(&inst,reg,m_num_banks,m_bank_warp_shift)) ) {
+          if( !m_arbiter.is_finished(bank) )  return false;
       } else {
           return false;
       }

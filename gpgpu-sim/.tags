@@ -293,10 +293,10 @@ alloc	shader.h	/^    mem_fetch *alloc( const warp_inst_t &inst, const mem_access
 alloc	shader.h	/^    mem_fetch *alloc( new_addr_type addr, mem_access_type type, unsigned size, bool wr ) const $/;"	f	class:shader_core_mem_fetch_allocator
 alloc_read	shader.h	/^      void alloc_read( const op_t &op, int k )  { $/;"	f	class:opndcoll_rfu_t::allocation_t
 alloc_t	shader.h	/^   enum alloc_t {$/;"	g	class:opndcoll_rfu_t
-alloc_write	shader.h	/^      void alloc_write( const op_t &op ) { $/;"	f	class:opndcoll_rfu_t::allocation_t
+alloc_write	shader.h	/^      void alloc_write( const op_t &op, int k ) { $/;"	f	class:opndcoll_rfu_t::allocation_t
 allocate	gpu-cache.h	/^    void allocate( new_addr_type tag, new_addr_type block_addr, unsigned time )$/;"	f	struct:cache_block_t
 allocate	shader.cc	/^bool opndcoll_rfu_t::collector_unit_t::allocate( register_set* pipeline_reg_set, register_set* output_reg_set ) $/;"	f	class:opndcoll_rfu_t::collector_unit_t
-allocate_bank_for_write	shader.h	/^      void allocate_bank_for_write( unsigned bank, const op_t &op )$/;"	f	class:opndcoll_rfu_t::arbiter_t
+allocate_bank_for_write	shader.h	/^      bool allocate_bank_for_write( unsigned bank, const op_t &op )$/;"	f	class:opndcoll_rfu_t::arbiter_t
 allocate_barrier	shader.cc	/^void barrier_set_t::allocate_barrier( unsigned cta_id, warp_set_t warps )$/;"	f	class:barrier_set_t
 allocate_cu	shader.cc	/^void opndcoll_rfu_t::allocate_cu( unsigned port_num )$/;"	f	class:opndcoll_rfu_t
 allocate_for_read	shader.h	/^      bool allocate_for_read( unsigned bank, const op_t &op )$/;"	f	class:opndcoll_rfu_t::arbiter_t
@@ -444,6 +444,7 @@ dec_inst_in_pipeline	shader.h	/^    void dec_inst_in_pipeline() $/;"	f	class:shd
 dec_n_atomic	shader.h	/^    void dec_n_atomic(unsigned n) { m_n_atomic-=n; }$/;"	f	class:shd_warp_t
 dec_step	shader.h	/^      void dec_step() { --step_to_go; }$/;"	f	class:opndcoll_rfu_t::allocation_t
 dec_store_req	shader.h	/^    void dec_store_req() $/;"	f	class:shd_warp_t
+dec_write_step	shader.h	/^      bool dec_write_step(unsigned bank)$/;"	f	class:opndcoll_rfu_t::arbiter_t
 decode	shader.cc	/^void shader_core_ctx::decode()$/;"	f	class:shader_core_ctx
 decrement_atomic_count	shader.cc	/^void shader_core_ctx::decrement_atomic_count( unsigned wid, unsigned n )$/;"	f	class:shader_core_ctx
 destroy_thread_CFlogger	stat-tool.cc	/^void destroy_thread_CFlogger( ) $/;"	f
@@ -987,6 +988,7 @@ is_free	shader.h	/^      bool is_free(){return m_free;}$/;"	f	class:opndcoll_rfu
 is_read	shader.h	/^      bool is_read() const { return m_allocation==READ_ALLOC; }$/;"	f	class:opndcoll_rfu_t::allocation_t
 is_write	mem_fetch.h	/^   bool is_write() {return m_access.is_write();}$/;"	f	class:mem_fetch
 is_write	shader.h	/^      bool is_write() const {return m_allocation==WRITE_ALLOC; }$/;"	f	class:opndcoll_rfu_t::allocation_t
+is_writing	shader.h	/^      bool is_writing(unsigned bank, const op_t& obj)$/;"	f	class:opndcoll_rfu_t::arbiter_t
 isactive	shader.h	/^    unsigned isactive() const {if(m_n_active_cta>0) return 1; else return 0;}$/;"	f	class:shader_core_ctx
 isatomic	mem_fetch.cc	/^bool mem_fetch::isatomic() const$/;"	f	class:mem_fetch
 isconst	mem_fetch.cc	/^bool mem_fetch::isconst() const$/;"	f	class:mem_fetch
@@ -1851,6 +1853,7 @@ reset	shader.h	/^    void reset()$/;"	f	class:shd_warp_t
 reset	stat-tool.cc	/^void thread_insn_span::reset(unsigned long long  cycle) $/;"	f	class:thread_insn_span
 reset	stat-tool.h	/^   void reset(unsigned long long  cycle) {$/;"	f	class:linear_histogram_snapshot
 reset_alloction	shader.h	/^      void reset_alloction()$/;"	f	class:opndcoll_rfu_t::arbiter_t
+reset_bank_for_write	shader.h	/^      void reset_bank_for_write(unsigned bank)$/;"	f	class:opndcoll_rfu_t::arbiter_t
 reset_bins	histogram.cc	/^void binned_histogram::reset_bins () {$/;"	f	class:binned_histogram
 reset_stack	stack.cc	/^void reset_stack(Stack *S) {$/;"	f
 response_buffer_full	shader.cc	/^bool ldst_unit::response_buffer_full() const$/;"	f	class:ldst_unit
