@@ -1362,9 +1362,9 @@ ID_OC_SFU	shader.h	/^    ID_OC_SFU,  $/;"	e	enum:pipeline_stage_name_t
 ID_OC_SP	shader.h	/^    ID_OC_SP=0,$/;"	e	enum:pipeline_stage_name_t
 MAX_ALU_LATENCY	shader.h	/^    static const unsigned MAX_ALU_LATENCY = 512;$/;"	m	class:shader_core_ctx
 MAX_ALU_LATENCY	shader.h	/^    static const unsigned MAX_ALU_LATENCY = 512;$/;"	m	class:simd_function_unit
-MAX_CTA_PER_SHADER	shader.h	74;"	d
+MAX_CTA_PER_SHADER	shader.h	77;"	d
 NO_ALLOC	shader.h	/^      NO_ALLOC,$/;"	e	enum:opndcoll_rfu_t::alloc_t
-NO_OP_FLAG	shader.h	59;"	d
+NO_OP_FLAG	shader.h	62;"	d
 NUM_CONCRETE_SCHEDULERS	shader.h	/^    NUM_CONCRETE_SCHEDULERS$/;"	e	enum:concrete_scheduler
 NUM_ORDERING	shader.h	/^        NUM_ORDERING,$/;"	e	enum:scheduler_unit::OrderingType
 N_PIPELINE_STAGES	shader.h	/^    N_PIPELINE_STAGES $/;"	e	enum:pipeline_stage_name_t
@@ -1375,7 +1375,8 @@ ORDERED_PRIORITY_FUNC_ONLY	shader.h	/^        ORDERED_PRIORITY_FUNC_ONLY,$/;"	e	
 ORDERING_GREEDY_THEN_PRIORITY_FUNC	shader.h	/^        ORDERING_GREEDY_THEN_PRIORITY_FUNC = 0,$/;"	e	enum:scheduler_unit::OrderingType
 OrderingType	shader.h	/^    enum OrderingType $/;"	g	class:scheduler_unit
 READ_ALLOC	shader.h	/^      READ_ALLOC,$/;"	e	enum:opndcoll_rfu_t::alloc_t
-READ_PACKET_SIZE	shader.h	66;"	d
+READ_OPERAND_CYCLE	shader.h	58;"	d
+READ_PACKET_SIZE	shader.h	69;"	d
 SCHEDULER_PRIORITIZATION_GTLRR	shader.h	/^    SCHEDULER_PRIORITIZATION_GTLRR, \/\/ Greedy Then Loose Round Robin$/;"	e	enum:scheduler_prioritization_type
 SCHEDULER_PRIORITIZATION_GTO	shader.h	/^    SCHEDULER_PRIORITIZATION_GTO, \/\/ Greedy Then Oldest$/;"	e	enum:scheduler_prioritization_type
 SCHEDULER_PRIORITIZATION_GTY	shader.h	/^    SCHEDULER_PRIORITIZATION_GTY, \/\/ Greedy Then Youngest$/;"	e	enum:scheduler_prioritization_type
@@ -1386,8 +1387,9 @@ SCHEDULER_PRIORITIZATION_YOUNGEST	shader.h	/^    SCHEDULER_PRIORITIZATION_YOUNGE
 SHADER_H	shader.h	30;"	d
 WARP_PER_CTA_MAX	shader.h	/^const unsigned WARP_PER_CTA_MAX = 48;$/;"	v
 WRITE_ALLOC	shader.h	/^      WRITE_ALLOC,$/;"	e	enum:opndcoll_rfu_t::alloc_t
-WRITE_MASK_SIZE	shader.h	71;"	d
-WRITE_PACKET_SIZE	shader.h	69;"	d
+WRITE_MASK_SIZE	shader.h	74;"	d
+WRITE_OPERAND_CYCLE	shader.h	59;"	d
+WRITE_PACKET_SIZE	shader.h	72;"	d
 _inmatch	shader.h	/^      int *_inmatch;$/;"	m	class:opndcoll_rfu_t::arbiter_t
 _outmatch	shader.h	/^      int *_outmatch;$/;"	m	class:opndcoll_rfu_t::arbiter_t
 _request	shader.h	/^      int **_request;$/;"	m	class:opndcoll_rfu_t::arbiter_t
@@ -1396,12 +1398,12 @@ add_supervised_warp_id	shader.h	/^	void add_supervised_warp_id(int i) {$/;"	f	cl
 add_supervised_warp_id	shader.h	/^    virtual void add_supervised_warp_id(int i) {$/;"	f	class:scheduler_unit
 alloc	shader.h	/^    mem_fetch *alloc( const warp_inst_t &inst, const mem_access_t &access ) const$/;"	f	class:shader_core_mem_fetch_allocator
 alloc	shader.h	/^    mem_fetch *alloc( new_addr_type addr, mem_access_type type, unsigned size, bool wr ) const $/;"	f	class:shader_core_mem_fetch_allocator
-alloc_read	shader.h	/^      void alloc_read( const op_t &op )  { assert(is_free()); m_allocation=READ_ALLOC; m_op=op; }$/;"	f	class:opndcoll_rfu_t::allocation_t
+alloc_read	shader.h	/^      void alloc_read( const op_t &op, int k )  { $/;"	f	class:opndcoll_rfu_t::allocation_t
 alloc_t	shader.h	/^   enum alloc_t {$/;"	g	class:opndcoll_rfu_t
-alloc_write	shader.h	/^      void alloc_write( const op_t &op ) { assert(is_free()); m_allocation=WRITE_ALLOC; m_op=op; }$/;"	f	class:opndcoll_rfu_t::allocation_t
+alloc_write	shader.h	/^      void alloc_write( const op_t &op ) { $/;"	f	class:opndcoll_rfu_t::allocation_t
 allocate_bank_for_write	shader.h	/^      void allocate_bank_for_write( unsigned bank, const op_t &op )$/;"	f	class:opndcoll_rfu_t::arbiter_t
-allocate_for_read	shader.h	/^      void allocate_for_read( unsigned bank, const op_t &op )$/;"	f	class:opndcoll_rfu_t::arbiter_t
-allocation_t	shader.h	/^      allocation_t() { m_allocation = NO_ALLOC; }$/;"	f	class:opndcoll_rfu_t::allocation_t
+allocate_for_read	shader.h	/^      bool allocate_for_read( unsigned bank, const op_t &op )$/;"	f	class:opndcoll_rfu_t::arbiter_t
+allocation_t	shader.h	/^      allocation_t() { m_allocation = NO_ALLOC; step_to_go = 0; }$/;"	f	class:opndcoll_rfu_t::allocation_t
 allocation_t	shader.h	/^   class allocation_t {$/;"	c	class:opndcoll_rfu_t
 arbiter_t	shader.h	/^      arbiter_t()$/;"	f	class:opndcoll_rfu_t::arbiter_t
 arbiter_t	shader.h	/^   class arbiter_t {$/;"	c	class:opndcoll_rfu_t
@@ -1426,6 +1428,7 @@ cycle	shader.h	/^    virtual void cycle() $/;"	f	class:pipelined_simd_unit
 dec_inst_in_pipeline	shader.h	/^    void dec_inst_in_pipeline( unsigned warp_id ) { m_warp[warp_id].dec_inst_in_pipeline(); } \/\/ also used in writeback()$/;"	f	class:shader_core_ctx
 dec_inst_in_pipeline	shader.h	/^    void dec_inst_in_pipeline() $/;"	f	class:shd_warp_t
 dec_n_atomic	shader.h	/^    void dec_n_atomic(unsigned n) { m_n_atomic-=n; }$/;"	f	class:shd_warp_t
+dec_step	shader.h	/^      void dec_step() { --step_to_go; }$/;"	f	class:opndcoll_rfu_t::allocation_t
 dec_store_req	shader.h	/^    void dec_store_req() $/;"	f	class:shd_warp_t
 dispatch_unit_t	shader.h	/^      dispatch_unit_t(std::vector<collector_unit_t>* cus) $/;"	f	class:opndcoll_rfu_t::dispatch_unit_t
 dispatch_unit_t	shader.h	/^   class dispatch_unit_t {$/;"	c	class:opndcoll_rfu_t
@@ -1582,6 +1585,7 @@ input_port_t	shader.h	/^       input_port_t(port_vector_t & input, port_vector_t
 input_port_t	shader.h	/^   class input_port_t {$/;"	c	class:opndcoll_rfu_t
 insn_latency_info	shader.h	/^struct insn_latency_info {$/;"	s
 inst_in_pipeline	shader.h	/^    bool inst_in_pipeline() const { return m_inst_in_pipeline > 0; }$/;"	f	class:shd_warp_t
+is_finished	shader.h	/^      bool is_finished() { return step_to_go==0 && !is_free(); }$/;"	f	class:opndcoll_rfu_t::allocation_t
 is_free	shader.h	/^      bool is_free() const {return m_allocation==NO_ALLOC; }$/;"	f	class:opndcoll_rfu_t::allocation_t
 is_free	shader.h	/^      bool is_free(){return m_free;}$/;"	f	class:opndcoll_rfu_t::collector_unit_t
 is_read	shader.h	/^      bool is_read() const { return m_allocation==READ_ALLOC; }$/;"	f	class:opndcoll_rfu_t::allocation_t
@@ -1836,6 +1840,7 @@ op_t	shader.h	/^      op_t( collector_unit_t *cu, unsigned op, unsigned reg, uns
 op_t	shader.h	/^      op_t( const warp_inst_t *warp, unsigned reg, unsigned num_banks, unsigned bank_warp_shift )$/;"	f	class:opndcoll_rfu_t::op_t
 op_t	shader.h	/^      op_t() { m_valid = false; }$/;"	f	class:opndcoll_rfu_t::op_t
 op_t	shader.h	/^   class op_t {$/;"	c	class:opndcoll_rfu_t
+op_t_same_to	shader.h	/^      bool op_t_same_to( const op_t& obj )$/;"	f	class:opndcoll_rfu_t::allocation_t
 opndcoll_rfu_t	shader.h	/^   opndcoll_rfu_t()$/;"	f	class:opndcoll_rfu_t
 opndcoll_rfu_t	shader.h	/^class opndcoll_rfu_t { \/\/ operand collector based register file unit$/;"	c
 pc	shader.h	/^   unsigned pc;$/;"	m	struct:insn_latency_info
@@ -1853,7 +1858,8 @@ process_banks	shader.h	/^   void process_banks()$/;"	f	class:opndcoll_rfu_t
 push	shader.h	/^    virtual void push(mem_fetch *mf) $/;"	f	class:shader_memory_interface
 push	shader.h	/^    virtual void push(mem_fetch *mf)$/;"	f	class:perfect_memory_interface
 push_response_fifo	shader.h	/^    void push_response_fifo(class mem_fetch *mf) {$/;"	f	class:simt_core_cluster
-reset	shader.h	/^      void reset() { m_allocation = NO_ALLOC; }$/;"	f	class:opndcoll_rfu_t::allocation_t
+read_queue_pop	shader.h	/^      void read_queue_pop(unsigned bank)$/;"	f	class:opndcoll_rfu_t::arbiter_t
+reset	shader.h	/^      void reset() { m_allocation = NO_ALLOC; step_to_go = 0; }$/;"	f	class:opndcoll_rfu_t::allocation_t
 reset	shader.h	/^      void reset() { m_valid = false; }$/;"	f	class:opndcoll_rfu_t::op_t
 reset	shader.h	/^    void reset()$/;"	f	class:shd_warp_t
 reset_alloction	shader.h	/^      void reset_alloction()$/;"	f	class:opndcoll_rfu_t::arbiter_t
@@ -1895,6 +1901,7 @@ sp_unit	shader.h	/^class sp_unit : public pipelined_simd_unit$/;"	c
 stallable	shader.h	/^    virtual bool stallable() const { return false; }$/;"	f	class:pipelined_simd_unit
 stallable	shader.h	/^    virtual bool stallable() const { return true; }$/;"	f	class:ldst_unit
 step	shader.h	/^   void step()$/;"	f	class:opndcoll_rfu_t
+step_to_go	shader.h	/^      int step_to_go;$/;"	m	class:opndcoll_rfu_t::allocation_t
 stores_done	shader.h	/^    bool stores_done() const { return m_stores_outstanding == 0; }$/;"	f	class:shd_warp_t
 swl_scheduler	shader.h	/^class swl_scheduler : public scheduler_unit {$/;"	c
 thread_ctx_t	shader.h	/^class thread_ctx_t {$/;"	c

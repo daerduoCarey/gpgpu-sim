@@ -55,6 +55,9 @@
 #include "traffic_breakdown.h"
 
 
+#define READ_OPERAND_CYCLE      2
+#define WRITE_OPERAND_CYCLE      2
+
 
 #define NO_OP_FLAG            0xFF
 
@@ -609,7 +612,7 @@ private:
 
       // modifiers
       void reset() { m_valid = false; }
-   private:
+   public:
       bool m_valid;
       collector_unit_t  *m_cu; 
       const warp_inst_t *m_warp;
@@ -626,41 +629,45 @@ private:
 
    class allocation_t {
    public:
-      allocation_t() { m_allocation = NO_ALLOC; step_left_to_finish = 0; }
+      allocation_t() { m_allocation = NO_ALLOC; step_to_go = 0; }
       bool is_read() const { return m_allocation==READ_ALLOC; }
       bool is_write() const {return m_allocation==WRITE_ALLOC; }
       bool is_free() const {return m_allocation==NO_ALLOC; }
-      int step_left_to_finish;
+      void dec_step() { --step_to_go; }
       void dump(FILE *fp) const {
          if( m_allocation == NO_ALLOC ) { fprintf(fp,"<free>"); }
-         else if( m_allocation == READ_ALLOC ) { fprintf(fp,"rd: %d", step_left_to_finish); m_op.dump(fp); }
-         else if( m_allocation == WRITE_ALLOC ) { fprintf(fp,"wr: %d", step_left_to_finish); m_op.dump(fp); }
+         else if( m_allocation == READ_ALLOC ) { fprintf(fp,"rd: "); m_op.dump(fp); }
+         else if( m_allocation == WRITE_ALLOC ) { fprintf(fp,"wr: "); m_op.dump(fp); }
          fprintf(fp,"\n");
       }
-      void alloc_read( const op_t &op, int k )  {
-            assert(is_free()); 
-            m_allocation=READ_ALLOC; 
-            step_left_to_finish = k-1;
-            m_op=op; 
-        }
-      bool finished()
+      void alloc_read( const op_t &op, int k )  { 
+        assert(is_free()); 
+        m_allocation=READ_ALLOC; 
+        m_op=op; 
+        step_to_go = k-1;
+    }
+      void alloc_write( const op_t &op ) { 
+        assert(is_free()); 
+        m_allocation=WRITE_ALLOC;
+         m_op=op; 
+     }
+      void reset() { m_allocation = NO_ALLOC; step_to_go = 0; }
+      bool op_t_same_to( const op_t& obj )
       {
-            return step_left_to_finish==0;       
+            int k=0;
+            k+= m_op.m_valid==obj.m_valid;
+            k+= m_op.m_cu==obj.m_cu;
+            k+= m_op.m_warp==obj.m_warp;
+            k+= m_op.m_operand==obj.m_operand;
+            k+= m_op.m_register==obj.m_register;
+            k+= m_op.m_bank==obj.m_bank;
+            return k==6;
       }
-      void dec_step()
-      {
-            step_left_to_finish--;
-      }
-      void alloc_write( const op_t &op, int k ) { 
-            assert(is_free()); 
-            m_allocation=WRITE_ALLOC; 
-            step_left_to_finish = k-1;
-            m_op=op; 
-        }
-      void reset() { m_allocation = NO_ALLOC; step_left_to_finish = 0; }
+      bool is_finished() { return step_to_go==0 && !is_free(); }
    private:
       enum alloc_t m_allocation;
       op_t m_op;
+      int step_to_go;
    };
 
    class arbiter_t {
@@ -731,43 +738,37 @@ private:
             }
          }
       }
+      void read_queue_pop(unsigned bank)
+      {
+            m_queue[bank].pop_front();
+      }
       bool bank_idle( unsigned bank ) const
       {
           return m_allocated_bank[bank].is_free();
       }
-      bool allocate_bank_for_write( unsigned bank, const op_t &op )
+      void allocate_bank_for_write( unsigned bank, const op_t &op )
       {
          assert( bank < m_num_banks );
-         if( m_allocated_bank[bank].is_free() )
-         {
-            m_allocated_bank[bank].alloc_write(op, 2);
-         }
-         else
-         {
-            m_allocated_bank[bank].dec_step();
-         }
-         return m_allocated_bank[bank].finished();
+         m_allocated_bank[bank].alloc_write(op);
       }
       bool allocate_for_read( unsigned bank, const op_t &op )
       {
          assert( bank < m_num_banks );
-         if( m_allocated_bank[bank].is_free() )
-         {
-            m_allocated_bank[bank].alloc_read(op, 2);
-         }
-         else
-         {
-            m_allocated_bank[bank].dec_step();
-         }
-         return m_allocated_bank[bank].finished();
+         if( m_allocated_bank[bank].is_free() ) {
+            m_allocated_bank[bank].alloc_read(op, READ_OPERAND_CYCLE);
+        } else {
+            if( m_allocated_bank[bank].is_read() && m_allocated_bank[bank].op_t_same_to(op) ) {
+                    m_allocated_bank[bank].dec_step();
+            } else {
+                return false;
+            }
+        }
+        return m_allocated_bank[bank].is_finished();
       }
       void reset_alloction()
       {
          for( unsigned b=0; b < m_num_banks; b++ ) 
-         {
-            if( m_allocated_bank[b].finished() )
-                m_allocated_bank[b].reset();
-         }
+            if( m_allocated_bank[b].is_finished() ) m_allocated_bank[b].reset();
       }
 
    private:

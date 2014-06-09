@@ -1153,7 +1153,7 @@ void shader_core_ctx::execute()
         m_fu[n]->active_lanes_in_pipeline();
         enum pipeline_stage_name_t issue_port = m_issue_port[n];
         register_set& issue_inst = m_pipeline_reg[ issue_port ];
-	      warp_inst_t** ready_reg = issue_inst.get_ready();
+	warp_inst_t** ready_reg = issue_inst.get_ready();
         if( issue_inst.has_ready() && m_fu[n]->can_issue( **ready_reg ) ) {
             bool schedule_wb_now = !m_fu[n]->stallable();
             int resbus = -1;
@@ -1251,8 +1251,7 @@ void shader_core_ctx::writeback()
     	 * To handle this case, we ignore the return value (thus allowing
     	 * no stalling).
     	 */
-        bool ok = m_operand_collector.writeback(*pipe_reg);
-        if( !ok ) continue;
+        m_operand_collector.writeback(*pipe_reg);
         unsigned warp_id = pipe_reg->warp_id();
         m_scoreboard->releaseRegisters( pipe_reg );
         m_warp[warp_id].dec_inst_in_pipeline();
@@ -2513,7 +2512,7 @@ std::list<opndcoll_rfu_t::op_t> opndcoll_rfu_t::arbiter_t::allocate_reads()
             unsigned bank = (unsigned)i;
             op_t &op = m_queue[bank].front();
             result.push_back(op);
-            m_queue[bank].pop_front();
+           // m_queue[bank].pop_front();
          }
       }
    }
@@ -2885,8 +2884,7 @@ bool opndcoll_rfu_t::writeback( const warp_inst_t &inst )
       unsigned reg = *r;
       unsigned bank = register_bank(reg,inst.warp_id(),m_num_banks,m_bank_warp_shift);
       if( m_arbiter.bank_idle(bank) ) {
-          bool ok = m_arbiter.allocate_bank_for_write(bank,op_t(&inst,reg,m_num_banks,m_bank_warp_shift));
-          if( !ok ) return false;
+          m_arbiter.allocate_bank_for_write(bank,op_t(&inst,reg,m_num_banks,m_bank_warp_shift));
       } else {
           return false;
       }
@@ -2910,7 +2908,6 @@ bool opndcoll_rfu_t::writeback( const warp_inst_t &inst )
    return true;
 }
 
-//dispatches the operand registers of ready operand collectors (with all operands are collected) to the execute stage.
 void opndcoll_rfu_t::dispatch_ready_cu()
 {
    for( unsigned p=0; p < m_dispatch_units.size(); ++p ) {
@@ -2938,9 +2935,6 @@ void opndcoll_rfu_t::dispatch_ready_cu()
    }
 }
 
-// to allocate warp_inst_t to a free operand collector unit within its assigned sets of operand collectors. 
-// Also it adds a read requests for all source operands in their corresponding bank queues in the arbitrator.
-
 void opndcoll_rfu_t::allocate_cu( unsigned port_num )
 {
    input_port_t& inp = m_in_ports[port_num];
@@ -2954,7 +2948,7 @@ void opndcoll_rfu_t::allocate_cu( unsigned port_num )
                   if(cu_set[k].is_free()) {
                      collector_unit_t *cu = &cu_set[k];
                      allocated = cu->allocate(inp.m_in[i],inp.m_out[i]);
-                     m_arbiter.add_read_requests(cu);     //add read requests for both source operands in arbiter read queue and wait to find in banks
+                     m_arbiter.add_read_requests(cu);
                      break;
                   }
               }
@@ -2964,10 +2958,6 @@ void opndcoll_rfu_t::allocate_cu( unsigned port_num )
        }
    }
 }
-
-// processes read requests that do not have conflicts, in other words, the read requests that are in different register banks 
-// and do not go to the same operand collector are popped from the arbitrator queues. 
-// This accounts for write request priority over read requests.
 
 void opndcoll_rfu_t::allocate_reads()
 {
@@ -2980,10 +2970,12 @@ void opndcoll_rfu_t::allocate_reads()
       unsigned wid = rr.get_wid();
       unsigned bank = register_bank(reg,wid,m_num_banks,m_bank_warp_shift);
       bool ok = m_arbiter.allocate_for_read(bank,rr);
-      if( ok ) read_ops[bank] = rr;
+      if(ok) 
+      {
+          read_ops[bank] = rr;
+          m_arbiter.read_queue_pop(bank);
+      }
    }
-
-   //begin retrieve the gotten operands
    std::map<unsigned,op_t>::iterator r;
    for(r=read_ops.begin();r!=read_ops.end();++r ) {
       op_t &op = r->second;

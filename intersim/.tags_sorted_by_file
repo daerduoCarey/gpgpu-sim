@@ -1,0 +1,842 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+CC	Makefile	/^	CC = icc$/;"	m
+CC	Makefile	/^CC = gcc $(SNOW)$/;"	m
+CPP	Makefile	/^	CPP = icpc$/;"	m
+CPP	Makefile	/^CPP = g++ $(SNOW)$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = -O3 -g $/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = -g -Wall$/;"	m
+CPP_SRCS	Makefile	/^CPP_SRCS = $(INTERFACE) \\$/;"	m
+CREATESHAREDLIB	Makefile	/^CREATESHAREDLIB  ?=0$/;"	m
+DEBUG	Makefile	/^DEBUG = 0 $/;"	m
+INTERFACE	Makefile	/^INTERFACE = interconnect_interface.cpp$/;"	m
+LEX	Makefile	/^LEX    = flex$/;"	m
+LEX_OBJS	Makefile	/^LEX_OBJS  = $(OUTPUT_DIR)\/configlex.o$/;"	m
+OBJS	Makefile	/^OBJS = $(CPP_SRCS:%.cpp=$(OUTPUT_DIR)\/%.o) $(LEX_OBJS) $(YACC_OBJS)$/;"	m
+OUTPUT_DIR	Makefile	/^OUTPUT_DIR=$(SIM_OBJ_FILES_DIR)\/intersim$/;"	m
+PROG	Makefile	/^PROG     = intersim$/;"	m
+PURIFY	Makefile	/^PURIFY = \/usr\/bin\/purify$/;"	m
+QUANT	Makefile	/^QUANT  = \/usr\/bin\/quantify$/;"	m
+TEST	Makefile	/^TEST = $/;"	m
+TEST	Makefile	/^TEST = -DUNIT_TEST $/;"	m
+YACC	Makefile	/^YACC   = bison -d$/;"	m
+YACC_OBJS	Makefile	/^YACC_OBJS = $(OUTPUT_DIR)\/config_tab.o$/;"	m
+AddRequest	allocator.cpp	/^void DenseAllocator::AddRequest( int in, int out, int label, $/;"	f	class:DenseAllocator
+AddRequest	allocator.cpp	/^void SparseAllocator::AddRequest( int in, int out, int label, $/;"	f	class:SparseAllocator
+Allocator	allocator.cpp	/^Allocator::Allocator( const Configuration &config,$/;"	f	class:Allocator
+Clear	allocator.cpp	/^void DenseAllocator::Clear( )$/;"	f	class:DenseAllocator
+Clear	allocator.cpp	/^void SparseAllocator::Clear( )$/;"	f	class:SparseAllocator
+DenseAllocator	allocator.cpp	/^DenseAllocator::DenseAllocator( const Configuration &config,$/;"	f	class:DenseAllocator
+InputAssigned	allocator.cpp	/^int Allocator::InputAssigned( int out ) const$/;"	f	class:Allocator
+MaskOutput	allocator.cpp	/^void Allocator::MaskOutput( int out, int mask )$/;"	f	class:Allocator
+NewAllocator	allocator.cpp	/^Allocator *Allocator::NewAllocator( const Configuration &config,$/;"	f	class:Allocator
+OutputAssigned	allocator.cpp	/^int Allocator::OutputAssigned( int in ) const$/;"	f	class:Allocator
+PrintRequests	allocator.cpp	/^void DenseAllocator::PrintRequests( ) const$/;"	f	class:DenseAllocator
+PrintRequests	allocator.cpp	/^void SparseAllocator::PrintRequests( ) const$/;"	f	class:SparseAllocator
+ReadRequest	allocator.cpp	/^bool DenseAllocator::ReadRequest( sRequest &req, int in, int out ) const$/;"	f	class:DenseAllocator
+ReadRequest	allocator.cpp	/^bool SparseAllocator::ReadRequest( sRequest &req, int in, int out ) const$/;"	f	class:SparseAllocator
+ReadRequest	allocator.cpp	/^int DenseAllocator::ReadRequest( int in, int out ) const$/;"	f	class:DenseAllocator
+ReadRequest	allocator.cpp	/^int SparseAllocator::ReadRequest( int in, int out ) const$/;"	f	class:SparseAllocator
+RemoveRequest	allocator.cpp	/^void DenseAllocator::RemoveRequest( int in, int out, int label )$/;"	f	class:DenseAllocator
+RemoveRequest	allocator.cpp	/^void SparseAllocator::RemoveRequest( int in, int out, int label )$/;"	f	class:SparseAllocator
+SparseAllocator	allocator.cpp	/^SparseAllocator::SparseAllocator( const Configuration &config,$/;"	f	class:SparseAllocator
+_ClearMatching	allocator.cpp	/^void Allocator::_ClearMatching( )$/;"	f	class:Allocator
+~Allocator	allocator.cpp	/^Allocator::~Allocator( )$/;"	f	class:Allocator
+~DenseAllocator	allocator.cpp	/^DenseAllocator::~DenseAllocator( )$/;"	f	class:DenseAllocator
+~SparseAllocator	allocator.cpp	/^SparseAllocator::~SparseAllocator( )$/;"	f	class:SparseAllocator
+Allocator	allocator.hpp	/^class Allocator : public Module {$/;"	c
+DenseAllocator	allocator.hpp	/^class DenseAllocator : public Allocator {$/;"	c
+SparseAllocator	allocator.hpp	/^class SparseAllocator : public Allocator {$/;"	c
+_ALLOCATOR_HPP_	allocator.hpp	2;"	d
+_in_occ	allocator.hpp	/^   list<int> *_in_occ;$/;"	m	class:SparseAllocator
+_in_req	allocator.hpp	/^   list<sRequest> *_in_req;$/;"	m	class:SparseAllocator
+_inmatch	allocator.hpp	/^   int *_inmatch;$/;"	m	class:Allocator
+_inputs	allocator.hpp	/^   const int _inputs;$/;"	m	class:Allocator
+_out_occ	allocator.hpp	/^   list<int> *_out_occ;$/;"	m	class:SparseAllocator
+_out_req	allocator.hpp	/^   list<sRequest> *_out_req;$/;"	m	class:SparseAllocator
+_outmask	allocator.hpp	/^   int *_outmask;$/;"	m	class:Allocator
+_outmatch	allocator.hpp	/^   int *_outmatch;$/;"	m	class:Allocator
+_outputs	allocator.hpp	/^   const int _outputs;$/;"	m	class:Allocator
+_request	allocator.hpp	/^   sRequest **_request;$/;"	m	class:DenseAllocator
+in_pri	allocator.hpp	/^      int in_pri;$/;"	m	struct:Allocator::sRequest
+label	allocator.hpp	/^      int label;$/;"	m	struct:Allocator::sRequest
+out_pri	allocator.hpp	/^      int out_pri;$/;"	m	struct:Allocator::sRequest
+port	allocator.hpp	/^      int port;$/;"	m	struct:Allocator::sRequest
+sRequest	allocator.hpp	/^   struct sRequest {$/;"	s	class:Allocator
+AddRequest	arbiter.cpp	/^void Arbiter::AddRequest( int in, int label, int pri )$/;"	f	class:Arbiter
+Arbiter	arbiter.cpp	/^Arbiter::Arbiter( const Configuration &,$/;"	f	class:Arbiter
+Arbitrate	arbiter.cpp	/^void PriorityArbiter::Arbitrate( )$/;"	f	class:PriorityArbiter
+Clear	arbiter.cpp	/^void Arbiter::Clear( )$/;"	f	class:Arbiter
+Match	arbiter.cpp	/^int Arbiter::Match( ) const$/;"	f	class:Arbiter
+PriorityArbiter	arbiter.cpp	/^PriorityArbiter::PriorityArbiter( const Configuration &config,$/;"	f	class:PriorityArbiter
+RemoveRequest	arbiter.cpp	/^void Arbiter::RemoveRequest( int in, int label )$/;"	f	class:Arbiter
+~Arbiter	arbiter.cpp	/^Arbiter::~Arbiter( )$/;"	f	class:Arbiter
+~PriorityArbiter	arbiter.cpp	/^PriorityArbiter::~PriorityArbiter( )$/;"	f	class:PriorityArbiter
+Arbiter	arbiter.hpp	/^class Arbiter : public Module {$/;"	c
+PriorityArbiter	arbiter.hpp	/^class PriorityArbiter : public Arbiter {$/;"	c
+_ARBITER_HPP_	arbiter.hpp	2;"	d
+_inputs	arbiter.hpp	/^   const int _inputs;$/;"	m	class:Arbiter
+_match	arbiter.hpp	/^   int _match;$/;"	m	class:Arbiter
+_requests	arbiter.hpp	/^   list<sRequest> _requests;$/;"	m	class:Arbiter
+_rr_ptr	arbiter.hpp	/^   int _rr_ptr;$/;"	m	class:PriorityArbiter
+in	arbiter.hpp	/^      int in;$/;"	m	struct:Arbiter::sRequest
+label	arbiter.hpp	/^      int label;$/;"	m	struct:Arbiter::sRequest
+pri	arbiter.hpp	/^      int pri;$/;"	m	struct:Arbiter::sRequest
+sRequest	arbiter.hpp	/^   struct sRequest {$/;"	s	class:Arbiter
+_BOOKSIM_HPP_	booksim.hpp	2;"	d
+BookSimConfig	booksim_config.cpp	/^BookSimConfig::BookSimConfig( )$/;"	f	class:BookSimConfig
+BookSimConfig	booksim_config.hpp	/^class BookSimConfig : public Configuration {$/;"	c
+_BOOKSIM_CONFIG_HPP_	booksim_config.hpp	2;"	d
+BufferState	buffer_state.cpp	/^BufferState::BufferState( const Configuration& config, $/;"	f	class:BufferState
+Display	buffer_state.cpp	/^void BufferState::Display( ) const$/;"	f	class:BufferState
+FindAvailable	buffer_state.cpp	/^int BufferState::FindAvailable( )$/;"	f	class:BufferState
+IsAvailableFor	buffer_state.cpp	/^bool BufferState::IsAvailableFor( int vc ) const$/;"	f	class:BufferState
+IsFullFor	buffer_state.cpp	/^bool BufferState::IsFullFor( int vc  ) const$/;"	f	class:BufferState
+ProcessCredit	buffer_state.cpp	/^void BufferState::ProcessCredit( Credit *c )$/;"	f	class:BufferState
+SendingFlit	buffer_state.cpp	/^void BufferState::SendingFlit( Flit *f )$/;"	f	class:BufferState
+TakeBuffer	buffer_state.cpp	/^void BufferState::TakeBuffer( int vc )$/;"	f	class:BufferState
+_Init	buffer_state.cpp	/^void BufferState::_Init( const Configuration& config )$/;"	f	class:BufferState
+init	buffer_state.cpp	/^void BufferState::init( const Configuration& config ) $/;"	f	class:BufferState
+~BufferState	buffer_state.cpp	/^BufferState::~BufferState( )$/;"	f	class:BufferState
+BufferState	buffer_state.hpp	/^    BufferState() : Module( ) {}$/;"	f	class:BufferState
+BufferState	buffer_state.hpp	/^class BufferState : public Module {$/;"	c
+_BUFFER_STATE_HPP_	buffer_state.hpp	2;"	d
+_buf_size	buffer_state.hpp	/^   int  _buf_size;$/;"	m	class:BufferState
+_cur_occupied	buffer_state.hpp	/^   int  *_cur_occupied;$/;"	m	class:BufferState
+_in_use	buffer_state.hpp	/^   bool *_in_use;$/;"	m	class:BufferState
+_last_avail	buffer_state.hpp	/^   int  _last_avail;$/;"	m	class:BufferState
+_tail_sent	buffer_state.hpp	/^   bool *_tail_sent;$/;"	m	class:BufferState
+_vcs	buffer_state.hpp	/^   int  _vcs;$/;"	m	class:BufferState
+_wait_for_tail_credit	buffer_state.hpp	/^   int  _wait_for_tail_credit;$/;"	m	class:BufferState
+command	config.y	/^command : STR '=' STR ';'   { Configuration::GetTheConfig()->Assign( $1, $3 ); free( $1 ); free( $3 ); }$/;"	l
+commands	config.y	/^commands : commands command$/;"	l
+AddStrField	config_utils.cpp	/^void Configuration::AddStrField( const string &field, const string &value )$/;"	f	class:Configuration
+Assign	config_utils.cpp	/^void Configuration::Assign( const string &field, const string &value )$/;"	f	class:Configuration
+Assign	config_utils.cpp	/^void Configuration::Assign( const string &field, double value )$/;"	f	class:Configuration
+Assign	config_utils.cpp	/^void Configuration::Assign( const string &field, unsigned int value )$/;"	f	class:Configuration
+Configuration	config_utils.cpp	/^Configuration::Configuration( )$/;"	f	class:Configuration
+GetFloat	config_utils.cpp	/^double Configuration::GetFloat( const string &field, double def ) const$/;"	f	class:Configuration
+GetInt	config_utils.cpp	/^unsigned int Configuration::GetInt( const string &field, unsigned int def ) const$/;"	f	class:Configuration
+GetStr	config_utils.cpp	/^void Configuration::GetStr( const string &field, string &value, const string &def ) const$/;"	f	class:Configuration
+GetTheConfig	config_utils.cpp	/^Configuration *Configuration::GetTheConfig( )$/;"	f	class:Configuration
+Input	config_utils.cpp	/^int Configuration::Input( char *line, int max_size )$/;"	f	class:Configuration
+Parse	config_utils.cpp	/^void Configuration::Parse( const char* filename )$/;"	f	class:Configuration
+Parse	config_utils.cpp	/^void Configuration::Parse( const string& filename )$/;"	f	class:Configuration
+ParseArgs	config_utils.cpp	/^bool ParseArgs( Configuration *cf, int argc, char **argv )$/;"	f
+ParseError	config_utils.cpp	/^void Configuration::ParseError( const string &msg, unsigned int lineno ) const$/;"	f	class:Configuration
+config_input	config_utils.cpp	/^int config_input( char *line, int max_size )$/;"	f
+theConfig	config_utils.cpp	/^Configuration *Configuration::theConfig = 0;$/;"	m	class:Configuration	file:
+Configuration	config_utils.hpp	/^class Configuration {$/;"	c
+_CONFIG_UTILS_HPP_	config_utils.hpp	2;"	d
+_config_file	config_utils.hpp	/^   FILE *_config_file;$/;"	m	class:Configuration
+_float_map	config_utils.hpp	/^   map<string,double>       _float_map;$/;"	m	class:Configuration
+_int_map	config_utils.hpp	/^   map<string,unsigned int> _int_map;$/;"	m	class:Configuration
+_str_map	config_utils.hpp	/^   map<string,char *>       _str_map;$/;"	m	class:Configuration
+theConfig	config_utils.hpp	/^   static Configuration *theConfig;$/;"	m	class:Configuration
+Credit	credit.cpp	/^Credit::Credit( int max_vcs )$/;"	f	class:Credit
+~Credit	credit.cpp	/^Credit::~Credit( )$/;"	f	class:Credit
+Credit	credit.hpp	/^class Credit {$/;"	c
+_CREDIT_HPP_	credit.hpp	2;"	d
+head	credit.hpp	/^   bool head, tail;$/;"	m	class:Credit
+id	credit.hpp	/^   int  id;$/;"	m	class:Credit
+tail	credit.hpp	/^   bool head, tail;$/;"	m	class:Credit
+vc	credit.hpp	/^   int  *vc;$/;"	m	class:Credit
+vc_cnt	credit.hpp	/^   int  vc_cnt;$/;"	m	class:Credit
+Allocators	doc/manual.tex	/^independent of the number of VCs.$/;"	u
+Downloading and building the simulator	doc/manual.tex	/^\\label{sec:get_started}$/;"	u
+Flow control	doc/manual.tex	/^(see the \\texttt{routefunc.cpp} file in the simulator's source code).$/;"	u
+Getting started	doc/manual.tex	/^Section~\\ref{sec:config_params} for reference.$/;"	s
+Router organizations	doc/manual.tex	/^\\end{opt_list}$/;"	u
+The event-driven router	doc/manual.tex	/^\\end{opt_list}$/;"	b
+The input-queued router	doc/manual.tex	/^\\end{opt_list}$/;"	b
+Traffic	doc/manual.tex	/^\\texttt{alloc\\_iters} parameter.$/;"	u
+Display	event_router.cpp	/^void EventRouter::Display( ) const$/;"	f	class:EventRouter
+EventNextVCState	event_router.cpp	/^EventNextVCState::EventNextVCState( const Configuration& config, $/;"	f	class:EventNextVCState
+EventRouter	event_router.cpp	/^EventRouter::EventRouter( const Configuration& config,$/;"	f	class:EventRouter
+GetCredits	event_router.cpp	/^int EventNextVCState::GetCredits( int vc ) const$/;"	f	class:EventNextVCState
+GetInput	event_router.cpp	/^int EventNextVCState::GetInput( int vc ) const$/;"	f	class:EventNextVCState
+GetInputVC	event_router.cpp	/^int EventNextVCState::GetInputVC( int vc ) const$/;"	f	class:EventNextVCState
+GetPresence	event_router.cpp	/^int EventNextVCState::GetPresence( int vc ) const$/;"	f	class:EventNextVCState
+GetState	event_router.cpp	/^EventNextVCState::eNextVCState EventNextVCState::GetState( int vc ) const$/;"	f	class:EventNextVCState
+IncrWaiting	event_router.cpp	/^void EventNextVCState::IncrWaiting( int vc, int w_input, int w_vc )$/;"	f	class:EventNextVCState
+InternalStep	event_router.cpp	/^void EventRouter::InternalStep( )$/;"	f	class:EventRouter
+IsInputWaiting	event_router.cpp	/^bool EventNextVCState::IsInputWaiting( int vc, int w_input, int w_vc ) const$/;"	f	class:EventNextVCState
+IsWaiting	event_router.cpp	/^bool EventNextVCState::IsWaiting( int vc ) const$/;"	f	class:EventNextVCState
+PopWaiting	event_router.cpp	/^EventNextVCState::tWaiting *EventNextVCState::PopWaiting( int vc )$/;"	f	class:EventNextVCState
+PushWaiting	event_router.cpp	/^void EventNextVCState::PushWaiting( int vc, tWaiting *w )$/;"	f	class:EventNextVCState
+ReadInputs	event_router.cpp	/^void EventRouter::ReadInputs( )$/;"	f	class:EventRouter
+SetCredits	event_router.cpp	/^void EventNextVCState::SetCredits( int vc, int value )$/;"	f	class:EventNextVCState
+SetInput	event_router.cpp	/^void EventNextVCState::SetInput( int vc, int input )$/;"	f	class:EventNextVCState
+SetInputVC	event_router.cpp	/^void EventNextVCState::SetInputVC( int vc, int in_vc )$/;"	f	class:EventNextVCState
+SetPresence	event_router.cpp	/^void EventNextVCState::SetPresence( int vc, int value )$/;"	f	class:EventNextVCState
+SetState	event_router.cpp	/^void EventNextVCState::SetState( int vc, eNextVCState state )$/;"	f	class:EventNextVCState
+WriteOutputs	event_router.cpp	/^void EventRouter::WriteOutputs( )$/;"	f	class:EventRouter
+_ArrivalArb	event_router.cpp	/^void EventRouter::_ArrivalArb( int output )$/;"	f	class:EventRouter
+_ArrivalRequests	event_router.cpp	/^void EventRouter::_ArrivalRequests( int input ) $/;"	f	class:EventRouter
+_IncomingFlits	event_router.cpp	/^void EventRouter::_IncomingFlits( )$/;"	f	class:EventRouter
+_Init	event_router.cpp	/^void EventNextVCState::_Init( const Configuration& config )$/;"	f	class:EventNextVCState
+_OutputQueuing	event_router.cpp	/^void EventRouter::_OutputQueuing( )$/;"	f	class:EventRouter
+_ProcessWaiting	event_router.cpp	/^void EventRouter::_ProcessWaiting( int output, int out_vc )$/;"	f	class:EventRouter
+_ReceiveCredits	event_router.cpp	/^void EventRouter::_ReceiveCredits( )$/;"	f	class:EventRouter
+_ReceiveFlits	event_router.cpp	/^void EventRouter::_ReceiveFlits( )$/;"	f	class:EventRouter
+_SendCredits	event_router.cpp	/^void EventRouter::_SendCredits( )$/;"	f	class:EventRouter
+_SendFlits	event_router.cpp	/^void EventRouter::_SendFlits( )$/;"	f	class:EventRouter
+_SendTransport	event_router.cpp	/^void EventRouter::_SendTransport( int input, int output, tArrivalEvent *aevt )$/;"	f	class:EventRouter
+_TransportArb	event_router.cpp	/^void EventRouter::_TransportArb( int input ) $/;"	f	class:EventRouter
+_TransportRequests	event_router.cpp	/^void EventRouter::_TransportRequests( int output )$/;"	f	class:EventRouter
+init	event_router.cpp	/^void EventNextVCState::init( const Configuration& config ) $/;"	f	class:EventNextVCState
+~EventNextVCState	event_router.cpp	/^EventNextVCState::~EventNextVCState( )$/;"	f	class:EventNextVCState
+~EventRouter	event_router.cpp	/^EventRouter::~EventRouter( )$/;"	f	class:EventRouter
+EventNextVCState	event_router.hpp	/^   EventNextVCState() : Module() {}$/;"	f	class:EventNextVCState
+EventNextVCState	event_router.hpp	/^class EventNextVCState : public Module {$/;"	c
+EventRouter	event_router.hpp	/^class EventRouter : public Router {$/;"	c
+_EVENT_ROUTER_HPP_	event_router.hpp	2;"	d
+_arrival_arbiter	event_router.hpp	/^   PriorityArbiter             **_arrival_arbiter;$/;"	m	class:EventRouter
+_arrival_pipe	event_router.hpp	/^   PipelineFIFO<tArrivalEvent> *_arrival_pipe;$/;"	m	class:EventRouter
+_arrival_queue	event_router.hpp	/^   queue<tArrivalEvent *>      *_arrival_queue;$/;"	m	class:EventRouter
+_buf_size	event_router.hpp	/^   int _buf_size;$/;"	m	class:EventNextVCState
+_credit_pipe	event_router.hpp	/^   PipelineFIFO<Credit> *_credit_pipe;$/;"	m	class:EventRouter
+_credits	event_router.hpp	/^   int *_credits;$/;"	m	class:EventNextVCState
+_crossbar_pipe	event_router.hpp	/^   PipelineFIFO<Flit>   *_crossbar_pipe;$/;"	m	class:EventRouter
+_in_cred_buffer	event_router.hpp	/^   queue<Credit *> *_in_cred_buffer;$/;"	m	class:EventRouter
+_input	event_router.hpp	/^   int *_input;$/;"	m	class:EventNextVCState
+_inputVC	event_router.hpp	/^   int *_inputVC;$/;"	m	class:EventNextVCState
+_input_buffer	event_router.hpp	/^   queue<Flit *> *_input_buffer;$/;"	m	class:EventRouter
+_out_cred_buffer	event_router.hpp	/^   queue<Credit *> *_out_cred_buffer;$/;"	m	class:EventRouter
+_output_buffer	event_router.hpp	/^   queue<Flit *> *_output_buffer;$/;"	m	class:EventRouter
+_output_state	event_router.hpp	/^   EventNextVCState *_output_state;$/;"	m	class:EventRouter
+_presence	event_router.hpp	/^   int *_presence;$/;"	m	class:EventNextVCState
+_rf	event_router.hpp	/^   tRoutingFunction   _rf;$/;"	m	class:EventRouter
+_state	event_router.hpp	/^   eNextVCState *_state;$/;"	m	class:EventNextVCState
+_transport_arbiter	event_router.hpp	/^   PriorityArbiter          **_transport_arbiter;$/;"	m	class:EventRouter
+_transport_free	event_router.hpp	/^   bool *_transport_free;$/;"	m	class:EventRouter
+_transport_match	event_router.hpp	/^   int  *_transport_match;$/;"	m	class:EventRouter
+_transport_queue	event_router.hpp	/^   queue<tTransportEvent *> *_transport_queue;$/;"	m	class:EventRouter
+_vc	event_router.hpp	/^   VC  **_vc;$/;"	m	class:EventRouter
+_vc_size	event_router.hpp	/^   int _vc_size;$/;"	m	class:EventRouter
+_vcs	event_router.hpp	/^   int _vcs;$/;"	m	class:EventNextVCState
+_vcs	event_router.hpp	/^   int _vcs;$/;"	m	class:EventRouter
+_vct	event_router.hpp	/^   int _vct;$/;"	m	class:EventRouter
+_waiting	event_router.hpp	/^   list<tWaiting *> *_waiting;$/;"	m	class:EventNextVCState
+busy	event_router.hpp	/^      idle, busy, tail_pending$/;"	e	enum:EventNextVCState::eNextVCState
+dst_vc	event_router.hpp	/^      int  dst_vc;$/;"	m	struct:EventRouter::tArrivalEvent
+dst_vc	event_router.hpp	/^      int  dst_vc;$/;"	m	struct:EventRouter::tTransportEvent
+eNextVCState	event_router.hpp	/^   enum eNextVCState {$/;"	g	class:EventNextVCState
+head	event_router.hpp	/^      bool head;$/;"	m	struct:EventRouter::tArrivalEvent
+id	event_router.hpp	/^      int  id;    \/\/ debug$/;"	m	struct:EventRouter::tArrivalEvent
+id	event_router.hpp	/^      int  id;    \/\/ debug$/;"	m	struct:EventRouter::tTransportEvent
+id	event_router.hpp	/^      int  id;$/;"	m	struct:EventNextVCState::tWaiting
+idle	event_router.hpp	/^      idle, busy, tail_pending$/;"	e	enum:EventNextVCState::eNextVCState
+input	event_router.hpp	/^      int  input;$/;"	m	struct:EventNextVCState::tWaiting
+input	event_router.hpp	/^      int  input;$/;"	m	struct:EventRouter::tArrivalEvent
+input	event_router.hpp	/^      int  input;$/;"	m	struct:EventRouter::tTransportEvent
+output	event_router.hpp	/^      int  output;$/;"	m	struct:EventRouter::tArrivalEvent
+pres	event_router.hpp	/^      int  pres;$/;"	m	struct:EventNextVCState::tWaiting
+src_vc	event_router.hpp	/^      int  src_vc;$/;"	m	struct:EventRouter::tArrivalEvent
+src_vc	event_router.hpp	/^      int  src_vc;$/;"	m	struct:EventRouter::tTransportEvent
+tArrivalEvent	event_router.hpp	/^   struct tArrivalEvent {$/;"	s	class:EventRouter
+tTransportEvent	event_router.hpp	/^   struct tTransportEvent {$/;"	s	class:EventRouter
+tWaiting	event_router.hpp	/^   struct tWaiting {$/;"	s	class:EventNextVCState
+tail	event_router.hpp	/^      bool tail;$/;"	m	struct:EventRouter::tArrivalEvent
+tail_pending	event_router.hpp	/^      idle, busy, tail_pending$/;"	e	enum:EventNextVCState::eNextVCState
+vc	event_router.hpp	/^      int  vc;$/;"	m	struct:EventNextVCState::tWaiting
+watch	event_router.hpp	/^      bool watch; \/\/ debug$/;"	m	struct:EventRouter::tArrivalEvent
+watch	event_router.hpp	/^      bool watch; \/\/ debug$/;"	m	struct:EventRouter::tTransportEvent
+watch	event_router.hpp	/^      bool watch;$/;"	m	struct:EventNextVCState::tWaiting
+operator <<	flit.cpp	/^ostream& operator<<( ostream& os, const Flit& f )$/;"	f
+Flit	flit.hpp	/^struct Flit {$/;"	s
+_FLIT_HPP_	flit.hpp	2;"	d
+data	flit.hpp	/^   void* data;$/;"	m	struct:Flit
+dest	flit.hpp	/^   int  dest;$/;"	m	struct:Flit
+dr	flit.hpp	/^   mutable int dr;$/;"	m	struct:Flit
+head	flit.hpp	/^   bool head;$/;"	m	struct:Flit
+hops	flit.hpp	/^   int  hops;$/;"	m	struct:Flit
+id	flit.hpp	/^   int  id;$/;"	m	struct:Flit
+intm	flit.hpp	/^   mutable int intm;$/;"	m	struct:Flit
+net_num	flit.hpp	/^   int net_num; \/\/ which network is this flit in (we might have several icnt networks)$/;"	m	struct:Flit
+ph	flit.hpp	/^   mutable int ph;$/;"	m	struct:Flit
+pri	flit.hpp	/^   int  pri;$/;"	m	struct:Flit
+record	flit.hpp	/^   bool record;$/;"	m	struct:Flit
+ring_par	flit.hpp	/^   mutable int ring_par;$/;"	m	struct:Flit
+rob_time	flit.hpp	/^   int  rob_time;$/;"	m	struct:Flit
+sn	flit.hpp	/^   int  sn;$/;"	m	struct:Flit
+src	flit.hpp	/^   int  src;$/;"	m	struct:Flit
+tail	flit.hpp	/^   bool tail;$/;"	m	struct:Flit
+time	flit.hpp	/^   int  time;$/;"	m	struct:Flit
+true_tail	flit.hpp	/^   bool true_tail;$/;"	m	struct:Flit
+vc	flit.hpp	/^   int vc;$/;"	m	struct:Flit
+watch	flit.hpp	/^   bool watch;$/;"	m	struct:Flit
+Capacity	fly.cpp	/^double KNFly::Capacity( ) const$/;"	f	class:KNFly
+GetK	fly.cpp	/^int KNFly::GetK( ) const$/;"	f	class:KNFly
+GetN	fly.cpp	/^int KNFly::GetN( ) const$/;"	f	class:KNFly
+KNFly	fly.cpp	/^KNFly::KNFly( const Configuration &config ) :$/;"	f	class:KNFly
+_BuildNet	fly.cpp	/^void KNFly::_BuildNet( const Configuration &config )$/;"	f	class:KNFly
+_ComputeSize	fly.cpp	/^void KNFly::_ComputeSize( const Configuration &config )$/;"	f	class:KNFly
+_InChannel	fly.cpp	/^int KNFly::_InChannel( int stage, int addr, int port ) const$/;"	f	class:KNFly
+_OutChannel	fly.cpp	/^int KNFly::_OutChannel( int stage, int addr, int port ) const$/;"	f	class:KNFly
+KNFly	fly.hpp	/^class KNFly : public Network {$/;"	c
+_FLY_HPP_	fly.hpp	2;"	d
+_k	fly.hpp	/^   int _k;$/;"	m	class:KNFly
+_n	fly.hpp	/^   int _n;$/;"	m	class:KNFly
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+GetInjectionProcess	injection.cpp	/^tInjectionProcess GetInjectionProcess( const Configuration& config )$/;"	f
+InitializeInjectionMap	injection.cpp	/^void InitializeInjectionMap( )$/;"	f
+bernoulli	injection.cpp	/^int bernoulli( int \/*source*\/, double rate )$/;"	f
+gBurstAlpha	injection.cpp	/^double gBurstAlpha;$/;"	v
+gBurstBeta	injection.cpp	/^double gBurstBeta;$/;"	v
+gConstPacketSize	injection.cpp	/^int    gConstPacketSize;$/;"	v
+gInjectionProcessMap	injection.cpp	/^map<string, tInjectionProcess> gInjectionProcessMap;$/;"	v
+gNodeStates	injection.cpp	/^int *gNodeStates = 0;$/;"	v
+on_off	injection.cpp	/^int on_off( int source, double rate )$/;"	f
+_INJECTION_HPP_	injection.hpp	2;"	d
+tInjectionProcess	injection.hpp	/^typedef int (*tInjectionProcess)( int, double );$/;"	t
+_flit_size	interconnect_interface.cpp	/^int _flit_size ;$/;"	v
+_n_mem	interconnect_interface.cpp	/^static unsigned int _n_mem = 0;$/;"	v	file:
+_n_shader	interconnect_interface.cpp	/^static unsigned int _n_shader = 0;$/;"	v	file:
+advance_interconnect	interconnect_interface.cpp	/^void advance_interconnect () $/;"	f
+boundary_buf	interconnect_interface.cpp	/^   boundary_buf(){$/;"	f	class:boundary_buf
+boundary_buf	interconnect_interface.cpp	/^class boundary_buf{$/;"	c	file:
+boundary_buf_capacity	interconnect_interface.cpp	/^unsigned int boundary_buf_capacity ;  $/;"	v
+buf	interconnect_interface.cpp	/^   queue<void *> buf;$/;"	m	class:boundary_buf	file:
+capacity	interconnect_interface.cpp	/^   unsigned capacity;$/;"	m	class:boundary_buf	file:
+clock_boundary_buf	interconnect_interface.cpp	/^boundary_buf** clock_boundary_buf; $/;"	v
+create_buf	interconnect_interface.cpp	/^void create_buf(int src_n,int warp_n,int vc_n)$/;"	f
+create_node_map	interconnect_interface.cpp	/^void create_node_map(int n_shader, int n_mem, int size, int use_map) $/;"	f
+display_icnt_state	interconnect_interface.cpp	/^void display_icnt_state( FILE *fp )$/;"	f
+display_map	interconnect_interface.cpp	/^void display_map(int dim,int count)$/;"	f
+doub_net	interconnect_interface.cpp	/^bool doub_net = false; \/\/double networks disabled by default$/;"	v
+ejection_buf	interconnect_interface.cpp	/^queue<Flit *> ** ejection_buf; $/;"	v
+ejection_buffer_capacity	interconnect_interface.cpp	/^unsigned int ejection_buffer_capacity ;  $/;"	v
+fixed_lat_icnt	interconnect_interface.cpp	/^int fixed_lat_icnt = 0;$/;"	v
+fixed_latency	interconnect_interface.cpp	/^int fixed_latency(int input, int output)$/;"	f
+g_num_vcs	interconnect_interface.cpp	/^unsigned int g_num_vcs; \/\/number of virtual channels$/;"	v
+has_packet	interconnect_interface.cpp	/^   bool has_packet() {$/;"	f	class:boundary_buf
+icnt_config	interconnect_interface.cpp	/^BookSimConfig icnt_config; $/;"	v
+icnt_init_grid	interconnect_interface.cpp	/^void icnt_init_grid (){$/;"	f
+icnt_overal_stat	interconnect_interface.cpp	/^void icnt_overal_stat() \/\/should be called upon simulation exit to give an overal stat$/;"	f
+init_interconnect	interconnect_interface.cpp	/^void init_interconnect (char* config_file,$/;"	f
+input_buffer_capacity	interconnect_interface.cpp	/^unsigned int input_buffer_capacity ;$/;"	v
+interconnect_busy	interconnect_interface.cpp	/^unsigned interconnect_busy()$/;"	f
+interconnect_get_flit_size	interconnect_interface.cpp	/^unsigned interconnect_get_flit_size(){$/;"	f
+interconnect_has_buffer	interconnect_interface.cpp	/^bool interconnect_has_buffer(unsigned int input_node, unsigned int tot_req_size) $/;"	f
+interconnect_pop	interconnect_interface.cpp	/^void* interconnect_pop(unsigned int output_node) $/;"	f
+interconnect_push	interconnect_interface.cpp	/^void interconnect_push ( unsigned int input_node, unsigned int output_node, $/;"	f
+interconnect_stats	interconnect_interface.cpp	/^void interconnect_stats()$/;"	f
+is_full	interconnect_interface.cpp	/^   bool is_full(void){$/;"	f	class:boundary_buf
+is_mem	interconnect_interface.cpp	/^static inline bool is_mem(int node)$/;"	f	file:
+is_shd	interconnect_interface.cpp	/^static inline bool is_shd(int node)$/;"	f	file:
+map_gen	interconnect_interface.cpp	/^void map_gen(int dim,int  memcount, int memnodes[])$/;"	f
+max_fixedlat_buf_size	interconnect_interface.cpp	/^unsigned int* max_fixedlat_buf_size;$/;"	v
+mycomparison	interconnect_interface.cpp	/^class mycomparison {$/;"	c	file:
+net_c	interconnect_interface.cpp	/^static unsigned int net_c; \/\/number of interconnection networks$/;"	v	file:
+node_map	interconnect_interface.cpp	/^static int * node_map;  \/\/deviceID to mesh location map$/;"	v	file:
+operator ()	interconnect_interface.cpp	/^   bool operator() (const void* lhs, const void* rhs) const$/;"	f	class:mycomparison
+out_buf_fixedlat_buf	interconnect_interface.cpp	/^priority_queue<void * , vector<void* >, mycomparison> * out_buf_fixedlat_buf; $/;"	v
+packet_n	interconnect_interface.cpp	/^   int packet_n;$/;"	m	class:boundary_buf	file:
+perfect_icnt	interconnect_interface.cpp	/^bool perfect_icnt = 0;$/;"	v
+pop_packet	interconnect_interface.cpp	/^   void * pop_packet(){$/;"	f	class:boundary_buf
+push_flit_data	interconnect_interface.cpp	/^   void push_flit_data(void* data,bool is_tail) {$/;"	f	class:boundary_buf
+reverse_map	interconnect_interface.cpp	/^static int * reverse_map; $/;"	v	file:
+round_robin_turn	interconnect_interface.cpp	/^vector<int> round_robin_turn; \/\/keep track of boundary_buf last used in icnt_pop $/;"	v
+tail_flag	interconnect_interface.cpp	/^   queue<bool> tail_flag;$/;"	m	class:boundary_buf	file:
+time_vector_update_icnt_injected	interconnect_interface.cpp	/^void time_vector_update_icnt_injected(void* data, int input) $/;"	f
+top_packet	interconnect_interface.cpp	/^   void * top_packet(){$/;"	f	class:boundary_buf
+traffic	interconnect_interface.cpp	/^TrafficManager** traffic;$/;"	v
+transfer2boundary_buf	interconnect_interface.cpp	/^void transfer2boundary_buf(int output) {$/;"	f
+write_out_buf	interconnect_interface.cpp	/^void write_out_buf(int output, Flit *flit) {$/;"	f
+INTERCONNECT_INTERFACE_H	interconnect_interface.h	2;"	d
+data	interconnect_interface.h	/^   void *data;$/;"	m	struct:glue_buf
+dest	interconnect_interface.h	/^   int  dest;$/;"	m	struct:glue_buf
+flit_c	interconnect_interface.h	/^   int flit_c; \/\/ flit count $/;"	m	struct:glue_buf
+glue_buf	interconnect_interface.h	/^struct glue_buf {$/;"	s
+net_num	interconnect_interface.h	/^   int net_num; \/\/ which network is this flit in (we might have several icnt networks)$/;"	m	struct:glue_buf
+src	interconnect_interface.h	/^   int  src;$/;"	m	struct:glue_buf
+Display	iq_router.cpp	/^void IQRouter::Display( ) const$/;"	f	class:IQRouter
+IQRouter	iq_router.cpp	/^IQRouter::IQRouter( const Configuration& config,$/;"	f	class:IQRouter
+InternalStep	iq_router.cpp	/^void IQRouter::InternalStep( )$/;"	f	class:IQRouter
+ReadInputs	iq_router.cpp	/^void IQRouter::ReadInputs( )$/;"	f	class:IQRouter
+WriteOutputs	iq_router.cpp	/^void IQRouter::WriteOutputs( )$/;"	f	class:IQRouter
+_AddVCRequests	iq_router.cpp	/^void IQRouter::_AddVCRequests( VC* cur_vc, int input_index, bool watch )$/;"	f	class:IQRouter
+_InputQueuing	iq_router.cpp	/^void IQRouter::_InputQueuing( )$/;"	f	class:IQRouter
+_OutputQueuing	iq_router.cpp	/^void IQRouter::_OutputQueuing( )$/;"	f	class:IQRouter
+_ReceiveCredits	iq_router.cpp	/^void IQRouter::_ReceiveCredits( )$/;"	f	class:IQRouter
+_ReceiveFlits	iq_router.cpp	/^void IQRouter::_ReceiveFlits( )$/;"	f	class:IQRouter
+_Route	iq_router.cpp	/^void IQRouter::_Route( )$/;"	f	class:IQRouter
+_SWAlloc	iq_router.cpp	/^void IQRouter::_SWAlloc( )$/;"	f	class:IQRouter
+_SendCredits	iq_router.cpp	/^void IQRouter::_SendCredits( )$/;"	f	class:IQRouter
+_SendFlits	iq_router.cpp	/^void IQRouter::_SendFlits( )$/;"	f	class:IQRouter
+_VCAlloc	iq_router.cpp	/^void IQRouter::_VCAlloc( )$/;"	f	class:IQRouter
+~IQRouter	iq_router.cpp	/^IQRouter::~IQRouter( )$/;"	f	class:IQRouter
+IQRouter	iq_router.hpp	/^class IQRouter : public Router {$/;"	c
+_IQ_ROUTER_HPP_	iq_router.hpp	2;"	d
+_credit_pipe	iq_router.hpp	/^   PipelineFIFO<Credit> *_credit_pipe;$/;"	m	class:IQRouter
+_crossbar_pipe	iq_router.hpp	/^   PipelineFIFO<Flit>   *_crossbar_pipe;$/;"	m	class:IQRouter
+_hold_switch_for_packet	iq_router.hpp	/^   int _hold_switch_for_packet;$/;"	m	class:IQRouter
+_in_cred_buffer	iq_router.hpp	/^   queue<Credit *> *_in_cred_buffer;$/;"	m	class:IQRouter
+_input_buffer	iq_router.hpp	/^   queue<Flit *> *_input_buffer;$/;"	m	class:IQRouter
+_iq_time	iq_router.hpp	/^   int _iq_time;$/;"	m	class:IQRouter
+_next_vcs	iq_router.hpp	/^   BufferState *_next_vcs;$/;"	m	class:IQRouter
+_out_cred_buffer	iq_router.hpp	/^   queue<Credit *> *_out_cred_buffer;$/;"	m	class:IQRouter
+_output_buffer	iq_router.hpp	/^   queue<pair<Flit *,int> > *_output_buffer;$/;"	m	class:IQRouter
+_output_extra_latency	iq_router.hpp	/^   int _output_extra_latency;$/;"	m	class:IQRouter
+_rf	iq_router.hpp	/^   tRoutingFunction   _rf;$/;"	m	class:IQRouter
+_sw_allocator	iq_router.hpp	/^   Allocator *_sw_allocator;$/;"	m	class:IQRouter
+_sw_rr_offset	iq_router.hpp	/^   int *_sw_rr_offset;$/;"	m	class:IQRouter
+_switch_hold_in	iq_router.hpp	/^   int *_switch_hold_in;$/;"	m	class:IQRouter
+_switch_hold_out	iq_router.hpp	/^   int *_switch_hold_out;$/;"	m	class:IQRouter
+_switch_hold_vc	iq_router.hpp	/^   int *_switch_hold_vc;$/;"	m	class:IQRouter
+_vc	iq_router.hpp	/^   VC          **_vc;$/;"	m	class:IQRouter
+_vc_allocator	iq_router.hpp	/^   Allocator *_vc_allocator;$/;"	m	class:IQRouter
+_vc_size	iq_router.hpp	/^   int _vc_size;$/;"	m	class:IQRouter
+_vcs	iq_router.hpp	/^   int _vcs;$/;"	m	class:IQRouter
+Allocate	islip.cpp	/^void iSLIP_Sparse::Allocate( )$/;"	f	class:iSLIP_Sparse
+iSLIP_Sparse	islip.cpp	/^iSLIP_Sparse::iSLIP_Sparse( const Configuration &config,$/;"	f	class:iSLIP_Sparse
+~iSLIP_Sparse	islip.cpp	/^iSLIP_Sparse::~iSLIP_Sparse( )$/;"	f	class:iSLIP_Sparse
+_ISLIP_HPP_	islip.hpp	2;"	d
+_aptrs	islip.hpp	/^   int *_aptrs;$/;"	m	class:iSLIP_Sparse
+_gptrs	islip.hpp	/^   int *_gptrs;$/;"	m	class:iSLIP_Sparse
+_grants	islip.hpp	/^   int *_grants;$/;"	m	class:iSLIP_Sparse
+_iSLIP_iter	islip.hpp	/^   int _iSLIP_iter;$/;"	m	class:iSLIP_Sparse
+iSLIP_Sparse	islip.hpp	/^class iSLIP_Sparse : public SparseAllocator {$/;"	c
+Capacity	kncube.cpp	/^double KNCube::Capacity( ) const$/;"	f	class:KNCube
+GetK	kncube.cpp	/^int KNCube::GetK( ) const$/;"	f	class:KNCube
+GetN	kncube.cpp	/^int KNCube::GetN( ) const$/;"	f	class:KNCube
+InsertRandomFaults	kncube.cpp	/^void KNCube::InsertRandomFaults( const Configuration &config )$/;"	f	class:KNCube
+KNCube	kncube.cpp	/^KNCube::KNCube( const Configuration &config, bool mesh ) :$/;"	f	class:KNCube
+_BuildNet	kncube.cpp	/^void KNCube::_BuildNet( const Configuration &config )$/;"	f	class:KNCube
+_ComputeSize	kncube.cpp	/^void KNCube::_ComputeSize( const Configuration &config )$/;"	f	class:KNCube
+_LeftChannel	kncube.cpp	/^int KNCube::_LeftChannel( int node, int dim )$/;"	f	class:KNCube
+_LeftNode	kncube.cpp	/^int KNCube::_LeftNode( int node, int dim )$/;"	f	class:KNCube
+_RightChannel	kncube.cpp	/^int KNCube::_RightChannel( int node, int dim )$/;"	f	class:KNCube
+_RightNode	kncube.cpp	/^int KNCube::_RightNode( int node, int dim )$/;"	f	class:KNCube
+KNCube	kncube.hpp	/^class KNCube : public Network {$/;"	c
+_KNCUBE_HPP_	kncube.hpp	2;"	d
+_k	kncube.hpp	/^   int _k;$/;"	m	class:KNCube
+_mesh	kncube.hpp	/^   bool _mesh;$/;"	m	class:KNCube
+_n	kncube.hpp	/^   int _n;$/;"	m	class:KNCube
+Allocate	loa.cpp	/^void LOA::Allocate( )$/;"	f	class:LOA
+LOA	loa.cpp	/^LOA::LOA( const Configuration &config,$/;"	f	class:LOA
+~LOA	loa.cpp	/^LOA::~LOA( )$/;"	f	class:LOA
+LOA	loa.hpp	/^class LOA : public DenseAllocator {$/;"	c
+_LOA_HPP_	loa.hpp	2;"	d
+_counts	loa.hpp	/^   int *_counts;$/;"	m	class:LOA
+_gptr	loa.hpp	/^   int *_gptr;$/;"	m	class:LOA
+_req	loa.hpp	/^   int *_req;$/;"	m	class:LOA
+_rptr	loa.hpp	/^   int *_rptr;$/;"	m	class:LOA
+Allocate	maxsize.cpp	/^void MaxSizeMatch::Allocate( )$/;"	f	class:MaxSizeMatch
+MaxSizeMatch	maxsize.cpp	/^MaxSizeMatch::MaxSizeMatch( const Configuration &config,$/;"	f	class:MaxSizeMatch
+_ShortestAugmenting	maxsize.cpp	/^bool MaxSizeMatch::_ShortestAugmenting( )$/;"	f	class:MaxSizeMatch
+~MaxSizeMatch	maxsize.cpp	/^MaxSizeMatch::~MaxSizeMatch( )$/;"	f	class:MaxSizeMatch
+MaxSizeMatch	maxsize.hpp	/^class MaxSizeMatch : public DenseAllocator {$/;"	c
+_MAXSIZE_HPP_	maxsize.hpp	2;"	d
+_from	maxsize.hpp	/^   int *_from;   \/\/ array to hold breadth-first tree$/;"	m	class:MaxSizeMatch
+_ns	maxsize.hpp	/^   int *_ns;     \/\/ next stack$/;"	m	class:MaxSizeMatch
+_s	maxsize.hpp	/^   int *_s;      \/\/ stack of leaf nodes in tree$/;"	m	class:MaxSizeMatch
+log_two	misc_utils.cpp	/^int log_two( int x )$/;"	f
+powi	misc_utils.cpp	/^int powi( int x, int y ) \/\/ compute x to the y$/;"	f
+_MISC_UTILS_HPP_	misc_utils.hpp	2;"	d
+Debug	module.cpp	/^void Module::Debug( const string& msg ) const$/;"	f	class:Module
+Display	module.cpp	/^void Module::Display( ) const $/;"	f	class:Module
+DisplayHierarchy	module.cpp	/^void Module::DisplayHierarchy( int level ) const$/;"	f	class:Module
+Error	module.cpp	/^void Module::Error( const string& msg ) const$/;"	f	class:Module
+Module	module.cpp	/^Module::Module( )$/;"	f	class:Module
+Module	module.cpp	/^Module::Module( Module *parent, const string& name )$/;"	f	class:Module
+SetName	module.cpp	/^void Module::SetName( Module *parent, const string& name )$/;"	f	class:Module
+_AddChild	module.cpp	/^void Module::_AddChild( Module *child )$/;"	f	class:Module
+Module	module.hpp	/^class Module {$/;"	c
+_MODULE_HPP_	module.hpp	2;"	d
+_children	module.hpp	/^   vector<Module *> _children;$/;"	m	class:Module
+_fullname	module.hpp	/^   string _fullname;$/;"	m	class:Module
+_name	module.hpp	/^   string _name;$/;"	m	class:Module
+~Module	module.hpp	/^   virtual ~Module( ) {}$/;"	f	class:Module
+Capacity	network.cpp	/^double Network::Capacity( ) const$/;"	f	class:Network
+Display	network.cpp	/^void Network::Display( ) const$/;"	f	class:Network
+InsertRandomFaults	network.cpp	/^void Network::InsertRandomFaults( const Configuration &config )$/;"	f	class:Network
+InternalStep	network.cpp	/^void Network::InternalStep( )$/;"	f	class:Network
+Network	network.cpp	/^Network::Network( const Configuration &config ) :$/;"	f	class:Network
+NumDests	network.cpp	/^int Network::NumDests( ) const$/;"	f	class:Network
+NumSources	network.cpp	/^int Network::NumSources( ) const$/;"	f	class:Network
+OutChannelFault	network.cpp	/^void Network::OutChannelFault( int r, int c, bool fault )$/;"	f	class:Network
+ReadCredit	network.cpp	/^Credit *Network::ReadCredit( int source )$/;"	f	class:Network
+ReadFlit	network.cpp	/^Flit *Network::ReadFlit( int dest )$/;"	f	class:Network
+ReadInputs	network.cpp	/^void Network::ReadInputs( )$/;"	f	class:Network
+WriteCredit	network.cpp	/^void Network::WriteCredit( Credit *c, int dest )$/;"	f	class:Network
+WriteFlit	network.cpp	/^void Network::WriteFlit( Flit *f, int source )$/;"	f	class:Network
+WriteOutputs	network.cpp	/^void Network::WriteOutputs( )$/;"	f	class:Network
+_Alloc	network.cpp	/^void Network::_Alloc( )$/;"	f	class:Network
+gK	network.cpp	/^int gK = 0;$/;"	v
+gN	network.cpp	/^int gN = 0;$/;"	v
+gNodes	network.cpp	/^int gNodes = 0;$/;"	v
+~Network	network.cpp	/^Network::~Network( )$/;"	f	class:Network
+Network	network.hpp	/^class Network : public Module {$/;"	c
+_NETWORK_HPP_	network.hpp	2;"	d
+_chan	network.hpp	/^   Flit   **_chan;$/;"	m	class:Network
+_chan_cred	network.hpp	/^   Credit **_chan_cred;$/;"	m	class:Network
+_chan_use	network.hpp	/^   int *_chan_use;$/;"	m	class:Network
+_chan_use_cycles	network.hpp	/^   int _chan_use_cycles;$/;"	m	class:Network
+_channels	network.hpp	/^   int _channels;$/;"	m	class:Network
+_dests	network.hpp	/^   int _dests;$/;"	m	class:Network
+_eject	network.hpp	/^   Flit   **_eject;$/;"	m	class:Network
+_eject_cred	network.hpp	/^   Credit **_eject_cred;$/;"	m	class:Network
+_inject	network.hpp	/^   Flit   **_inject;$/;"	m	class:Network
+_inject_cred	network.hpp	/^   Credit **_inject_cred;$/;"	m	class:Network
+_routers	network.hpp	/^   Router **_routers;$/;"	m	class:Network
+_size	network.hpp	/^   int _size;$/;"	m	class:Network
+_sources	network.hpp	/^   int _sources;$/;"	m	class:Network
+Add	outputset.cpp	/^void OutputSet::Add( int output_port, int vc, int pri  )$/;"	f	class:OutputSet
+AddRange	outputset.cpp	/^void OutputSet::AddRange( int output_port, int vc_start, int vc_end, int pri )$/;"	f	class:OutputSet
+Clear	outputset.cpp	/^void OutputSet::Clear( )$/;"	f	class:OutputSet
+GetPortVC	outputset.cpp	/^bool OutputSet::GetPortVC( int *out_port, int *out_vc ) const$/;"	f	class:OutputSet
+GetVC	outputset.cpp	/^int OutputSet::GetVC( int output_port, int vc_index, int *pri ) const$/;"	f	class:OutputSet
+NumVCs	outputset.cpp	/^int OutputSet::NumVCs( int output_port ) const$/;"	f	class:OutputSet
+OutputEmpty	outputset.cpp	/^bool OutputSet::OutputEmpty( int output_port ) const$/;"	f	class:OutputSet
+OutputSet	outputset.cpp	/^OutputSet::OutputSet( int num_outputs )$/;"	f	class:OutputSet
+Size	outputset.cpp	/^int OutputSet::Size( ) const$/;"	f	class:OutputSet
+~OutputSet	outputset.cpp	/^OutputSet::~OutputSet( )$/;"	f	class:OutputSet
+OutputSet	outputset.hpp	/^class OutputSet {$/;"	c
+_OUTPUTSET_HPP_	outputset.hpp	2;"	d
+_num_outputs	outputset.hpp	/^   int _num_outputs;$/;"	m	class:OutputSet
+_outputs	outputset.hpp	/^   list<sSetElement> *_outputs;$/;"	m	class:OutputSet
+pri	outputset.hpp	/^      int pri;$/;"	m	struct:OutputSet::sSetElement
+sSetElement	outputset.hpp	/^   struct sSetElement {$/;"	s	class:OutputSet
+vc_end	outputset.hpp	/^      int vc_end;$/;"	m	struct:OutputSet::sSetElement
+vc_start	outputset.hpp	/^      int vc_start;$/;"	m	struct:OutputSet::sSetElement
+Allocate	pim.cpp	/^void PIM::Allocate( )$/;"	f	class:PIM
+PIM	pim.cpp	/^PIM::PIM( const Configuration &config,$/;"	f	class:PIM
+~PIM	pim.cpp	/^PIM::~PIM( )$/;"	f	class:PIM
+PIM	pim.hpp	/^class PIM : public DenseAllocator {$/;"	c
+_PIM_HPP_	pim.hpp	2;"	d
+_PIM_iter	pim.hpp	/^   int _PIM_iter;$/;"	m	class:PIM
+_grants	pim.hpp	/^   int *_grants;$/;"	m	class:PIM
+Advance	pipefifo.hpp	/^template<class T> void PipelineFIFO<T>::Advance( )$/;"	f	class:PipelineFIFO
+PipelineFIFO	pipefifo.hpp	/^template<class T> PipelineFIFO<T>::PipelineFIFO( Module *parent, $/;"	f	class:PipelineFIFO
+PipelineFIFO	pipefifo.hpp	/^template<class T> class PipelineFIFO : public Module {$/;"	c
+Read	pipefifo.hpp	/^template<class T> T* PipelineFIFO<T>::Read( int lane )$/;"	f	class:PipelineFIFO
+Write	pipefifo.hpp	/^template<class T> void PipelineFIFO<T>::Write( T* val, int lane )$/;"	f	class:PipelineFIFO
+WriteAll	pipefifo.hpp	/^template<class T> void PipelineFIFO<T>::WriteAll( T* val )$/;"	f	class:PipelineFIFO
+_PIPEFIFO_HPP_	pipefifo.hpp	2;"	d
+_data	pipefifo.hpp	/^   T ***_data;$/;"	m	class:PipelineFIFO
+_depth	pipefifo.hpp	/^   int _depth;$/;"	m	class:PipelineFIFO
+_lanes	pipefifo.hpp	/^   int _lanes;$/;"	m	class:PipelineFIFO
+_pipe_len	pipefifo.hpp	/^   int _pipe_len;$/;"	m	class:PipelineFIFO
+_pipe_ptr	pipefifo.hpp	/^   int _pipe_ptr;$/;"	m	class:PipelineFIFO
+~PipelineFIFO	pipefifo.hpp	/^template<class T> PipelineFIFO<T>::~PipelineFIFO( ) $/;"	f	class:PipelineFIFO
+RandomFloat	random_utils.cpp	/^float RandomFloat( float max )$/;"	f
+RandomInt	random_utils.cpp	/^int RandomInt( int max ) $/;"	f
+RandomIntLong	random_utils.cpp	/^unsigned long RandomIntLong( )$/;"	f
+RandomSeed	random_utils.cpp	/^void RandomSeed( long seed )$/;"	f
+_RANDOM_UTILS_HPP_	random_utils.hpp	2;"	d
+KK	rng.cpp	21;"	d	file:
+LL	rng.cpp	22;"	d	file:
+MM	rng.cpp	23;"	d	file:
+QUALITY	rng.cpp	46;"	d	file:
+TT	rng.cpp	51;"	d	file:
+is_odd	rng.cpp	52;"	d	file:
+main	rng.cpp	/^int main()$/;"	f
+mod_diff	rng.cpp	24;"	d	file:
+ran_arr_buf	rng.cpp	/^long ran_arr_buf[QUALITY];$/;"	v
+ran_arr_cycle	rng.cpp	/^long ran_arr_cycle()$/;"	f
+ran_arr_dummy	rng.cpp	/^long ran_arr_dummy=-1, ran_arr_started=-1;$/;"	v
+ran_arr_next	rng.cpp	88;"	d	file:
+ran_arr_ptr	rng.cpp	/^long *ran_arr_ptr=&ran_arr_dummy; \/* the next random number, or -1 *\/$/;"	v
+ran_arr_started	rng.cpp	/^long ran_arr_dummy=-1, ran_arr_started=-1;$/;"	v
+ran_array	rng.cpp	/^void ran_array(long aa[],int n)$/;"	f
+ran_start	rng.cpp	/^void ran_start(long seed)$/;"	f
+ran_x	rng.cpp	/^long ran_x[KK];                    \/* the generator state *\/$/;"	v
+_RNG_HPP_	rng.hpp	2;"	d
+KK	rng_double.cpp	21;"	d	file:
+LL	rng_double.cpp	22;"	d	file:
+QUALITY	rng_double.cpp	45;"	d	file:
+TT	rng_double.cpp	50;"	d	file:
+is_odd	rng_double.cpp	51;"	d	file:
+main	rng_double.cpp	/^int main()$/;"	f
+mod_sum	rng_double.cpp	23;"	d	file:
+ran_u	rng_double.cpp	/^double ran_u[KK];           \/* the generator state *\/$/;"	v
+ranf_arr_buf	rng_double.cpp	/^double ranf_arr_buf[QUALITY];$/;"	v
+ranf_arr_cycle	rng_double.cpp	/^double ranf_arr_cycle()$/;"	f
+ranf_arr_dummy	rng_double.cpp	/^double ranf_arr_dummy=-1.0, ranf_arr_started=-1.0;$/;"	v
+ranf_arr_next	rng_double.cpp	91;"	d	file:
+ranf_arr_ptr	rng_double.cpp	/^double *ranf_arr_ptr=&ranf_arr_dummy; \/* the next random fraction, or -1 *\/$/;"	v
+ranf_arr_started	rng_double.cpp	/^double ranf_arr_dummy=-1.0, ranf_arr_started=-1.0;$/;"	v
+ranf_array	rng_double.cpp	/^void ranf_array(double aa[], int n)$/;"	f
+ranf_start	rng_double.cpp	/^void ranf_start(long seed)$/;"	f
+main	rng_double_wrapper.cpp	3;"	d	file:
+ranf_next	rng_double_wrapper.cpp	/^double ranf_next( )$/;"	f
+main	rng_wrapper.cpp	3;"	d	file:
+ran_next	rng_wrapper.cpp	/^long ran_next( )$/;"	f
+GetRoutingFunction	routefunc.cpp	/^tRoutingFunction GetRoutingFunction( const Configuration& config )$/;"	f
+InitializeRoutingMap	routefunc.cpp	/^void InitializeRoutingMap( )$/;"	f
+chaos_mesh	routefunc.cpp	/^void chaos_mesh( const Router *r, const Flit *f, $/;"	f
+chaos_torus	routefunc.cpp	/^void chaos_torus( const Router *r, const Flit *f, $/;"	f
+dest_tag	routefunc.cpp	/^void dest_tag( const Router *r, const Flit *f, int in_channel, $/;"	f
+dim_order_bal_torus	routefunc.cpp	/^void dim_order_bal_torus( const Router *r, const Flit *f, int in_channel, $/;"	f
+dim_order_mesh	routefunc.cpp	/^void dim_order_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+dim_order_ni_mesh	routefunc.cpp	/^void dim_order_ni_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+dim_order_ni_torus	routefunc.cpp	/^void dim_order_ni_torus( const Router *r, const Flit *f, int in_channel, $/;"	f
+dim_order_torus	routefunc.cpp	/^void dim_order_torus( const Router *r, const Flit *f, int in_channel, $/;"	f
+dor_next_mesh	routefunc.cpp	/^int dor_next_mesh( int cur, int dest )$/;"	f
+dor_next_torus	routefunc.cpp	/^void dor_next_torus( int cur, int dest, int in_port,$/;"	f
+gNumVCS	routefunc.cpp	/^int gNumVCS;$/;"	v
+gRoutingFunctionMap	routefunc.cpp	/^map<string, tRoutingFunction> gRoutingFunctionMap;$/;"	v
+limited_adapt_mesh	routefunc.cpp	/^void limited_adapt_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+limited_adapt_mesh_old	routefunc.cpp	/^void limited_adapt_mesh_old( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+min_adapt_mesh	routefunc.cpp	/^void min_adapt_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+min_adapt_torus	routefunc.cpp	/^void min_adapt_torus( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+planar_adapt_mesh	routefunc.cpp	/^void planar_adapt_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+rand_min_intr_mesh	routefunc.cpp	/^int rand_min_intr_mesh( int src, int dest )$/;"	f
+romm_mesh	routefunc.cpp	/^void romm_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+romm_ni_mesh	routefunc.cpp	/^void romm_ni_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+singlerf	routefunc.cpp	/^void singlerf( const Router *, const Flit *f, int, OutputSet *outputs, bool inject )$/;"	f
+valiant_mesh	routefunc.cpp	/^void valiant_mesh( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+valiant_ni_torus	routefunc.cpp	/^void valiant_ni_torus( const Router *r, const Flit *f, int in_channel, $/;"	f
+valiant_torus	routefunc.cpp	/^void valiant_torus( const Router *r, const Flit *f, int in_channel, OutputSet *outputs, bool inject )$/;"	f
+_ROUTEFUNC_HPP_	routefunc.hpp	2;"	d
+tRoutingFunction	routefunc.hpp	/^typedef void (*tRoutingFunction)( const Router *, const Flit *, int in_channel, OutputSet *, bool );$/;"	t
+AddInputChannel	router.cpp	/^void Router::AddInputChannel( Flit **channel, Credit **backchannel )$/;"	f	class:Router
+AddOutputChannel	router.cpp	/^void Router::AddOutputChannel( Flit **channel, Credit **backchannel )$/;"	f	class:Router
+GetID	router.cpp	/^int Router::GetID( ) const$/;"	f	class:Router
+IsFaultyOutput	router.cpp	/^bool Router::IsFaultyOutput( int c ) const$/;"	f	class:Router
+NewRouter	router.cpp	/^Router *Router::NewRouter( const Configuration& config,$/;"	f	class:Router
+OutChannelFault	router.cpp	/^void Router::OutChannelFault( int c, bool fault )$/;"	f	class:Router
+Router	router.cpp	/^Router::Router( const Configuration& config,$/;"	f	class:Router
+_NewCredit	router.cpp	/^Credit *Router::_NewCredit( int vcs )$/;"	f	class:Router
+_RetireCredit	router.cpp	/^void Router::_RetireCredit( Credit *c )$/;"	f	class:Router
+~Router	router.cpp	/^Router::~Router( )$/;"	f	class:Router
+Router	router.hpp	/^class Router : public Module {$/;"	c
+_ROUTER_HPP_	router.hpp	2;"	d
+_channel_faults	router.hpp	/^   vector<bool>      *_channel_faults;$/;"	m	class:Router
+_credit_delay	router.hpp	/^   int _credit_delay;$/;"	m	class:Router
+_id	router.hpp	/^   int _id;$/;"	m	class:Router
+_input_channels	router.hpp	/^   vector<Flit **>   *_input_channels;$/;"	m	class:Router
+_input_credits	router.hpp	/^   vector<Credit **> *_input_credits;$/;"	m	class:Router
+_input_speedup	router.hpp	/^   int _input_speedup;$/;"	m	class:Router
+_inputs	router.hpp	/^   int _inputs;$/;"	m	class:Router
+_output_channels	router.hpp	/^   vector<Flit **>   *_output_channels;$/;"	m	class:Router
+_output_credits	router.hpp	/^   vector<Credit **> *_output_credits;$/;"	m	class:Router
+_output_speedup	router.hpp	/^   int _output_speedup;$/;"	m	class:Router
+_outputs	router.hpp	/^   int _outputs;$/;"	m	class:Router
+_routing_delay	router.hpp	/^   int _routing_delay;$/;"	m	class:Router
+_st_final_delay	router.hpp	/^   int _st_final_delay;$/;"	m	class:Router
+_st_prepare_delay	router.hpp	/^   int _st_prepare_delay;$/;"	m	class:Router
+_sw_alloc_delay	router.hpp	/^   int _sw_alloc_delay;$/;"	m	class:Router
+_vc_alloc_delay	router.hpp	/^   int _vc_alloc_delay;$/;"	m	class:Router
+Allocate	selalloc.cpp	/^void SelAlloc::Allocate( )$/;"	f	class:SelAlloc
+SelAlloc	selalloc.cpp	/^SelAlloc::SelAlloc( const Configuration &config,$/;"	f	class:SelAlloc
+~SelAlloc	selalloc.cpp	/^SelAlloc::~SelAlloc( )$/;"	f	class:SelAlloc
+SelAlloc	selalloc.hpp	/^class SelAlloc : public SparseAllocator {$/;"	c
+_SELALLOC_HPP_	selalloc.hpp	2;"	d
+_aptrs	selalloc.hpp	/^   int *_aptrs;$/;"	m	class:SelAlloc
+_gptrs	selalloc.hpp	/^   int *_gptrs;$/;"	m	class:SelAlloc
+_grants	selalloc.hpp	/^   int *_grants;$/;"	m	class:SelAlloc
+_iter	selalloc.hpp	/^   int _iter;$/;"	m	class:SelAlloc
+Display	singlenet.cpp	/^void SingleNet::Display( ) const$/;"	f	class:SingleNet
+SingleNet	singlenet.cpp	/^SingleNet::SingleNet( const Configuration &config ) :$/;"	f	class:SingleNet
+_BuildNet	singlenet.cpp	/^void SingleNet::_BuildNet( const Configuration &config )$/;"	f	class:SingleNet
+_ComputeSize	singlenet.cpp	/^void SingleNet::_ComputeSize( const Configuration &config )$/;"	f	class:SingleNet
+SingleNet	singlenet.hpp	/^class SingleNet : public Network {$/;"	c
+_SINGLENET_HPP_	singlenet.hpp	2;"	d
+AddSample	stats.cpp	/^void Stats::AddSample( double val )$/;"	f	class:Stats
+AddSample	stats.cpp	/^void Stats::AddSample( int val )$/;"	f	class:Stats
+Average	stats.cpp	/^double Stats::Average( ) const$/;"	f	class:Stats
+Clear	stats.cpp	/^void Stats::Clear( )$/;"	f	class:Stats
+Display	stats.cpp	/^void Stats::Display( ) const$/;"	f	class:Stats
+Max	stats.cpp	/^double Stats::Max( ) const$/;"	f	class:Stats
+Min	stats.cpp	/^double Stats::Min( ) const$/;"	f	class:Stats
+NeverUsed	stats.cpp	/^bool Stats::NeverUsed() const$/;"	f	class:Stats
+NumSamples	stats.cpp	/^int Stats::NumSamples( ) const$/;"	f	class:Stats
+Stats	stats.cpp	/^Stats::Stats( Module *parent, const string &name,$/;"	f	class:Stats
+~Stats	stats.cpp	/^Stats::~Stats( )$/;"	f	class:Stats
+Stats	stats.hpp	/^class Stats : public Module {$/;"	c
+_STATS_HPP_	stats.hpp	2;"	d
+_bin_size	stats.hpp	/^   double _bin_size;$/;"	m	class:Stats
+_hist	stats.hpp	/^   int *_hist;$/;"	m	class:Stats
+_max	stats.hpp	/^   double _max;$/;"	m	class:Stats
+_min	stats.hpp	/^   double _min;$/;"	m	class:Stats
+_num_bins	stats.hpp	/^   int    _num_bins;$/;"	m	class:Stats
+_num_samples	stats.hpp	/^   int    _num_samples;$/;"	m	class:Stats
+_reset	stats.hpp	/^   bool _reset;$/;"	m	class:Stats
+_sample_sum	stats.hpp	/^   double _sample_sum;$/;"	m	class:Stats
+StatAddSample	statwraper.cpp	/^void StatAddSample (void * st, int val)$/;"	f
+StatAverage	statwraper.cpp	/^double StatAverage(void * st) $/;"	f
+StatClear	statwraper.cpp	/^void StatClear(void * st)$/;"	f
+StatCreate	statwraper.cpp	/^Stats* StatCreate (const char * name, double bin_size, int num_bins) {$/;"	f
+StatDisp	statwraper.cpp	/^void StatDisp (void * st)$/;"	f
+StatMax	statwraper.cpp	/^double StatMax(void * st) $/;"	f
+StatMin	statwraper.cpp	/^double StatMin(void * st) $/;"	f
+STAT_WRAPER_H	statwraper.h	2;"	d
+GenerateRandomPerm	traffic.cpp	/^void GenerateRandomPerm( int total_nodes )$/;"	f
+GetTrafficFunction	traffic.cpp	/^tTrafficFunction GetTrafficFunction( const Configuration& config )$/;"	f
+InitializeTrafficMap	traffic.cpp	/^void InitializeTrafficMap( )$/;"	f
+ResetTrafficFunction	traffic.cpp	/^void ResetTrafficFunction( )$/;"	f
+StepTrafficFunction	traffic.cpp	/^void StepTrafficFunction( )$/;"	f
+asymmetric	traffic.cpp	/^int asymmetric( int source, int total_nodes )$/;"	f
+bitcomp	traffic.cpp	/^int bitcomp( int source, int total_nodes )$/;"	f
+bitrev	traffic.cpp	/^int bitrev( int source, int total_nodes )$/;"	f
+diagonal	traffic.cpp	/^int diagonal( int source, int total_nodes )$/;"	f
+gPerm	traffic.cpp	/^int *gPerm = 0;$/;"	v
+gPermSeed	traffic.cpp	/^int gPermSeed;$/;"	v
+gResetTraffic	traffic.cpp	/^int gResetTraffic = 0;$/;"	v
+gStepTraffic	traffic.cpp	/^int gStepTraffic  = 0;$/;"	v
+gTrafficFunctionMap	traffic.cpp	/^map<string, tTrafficFunction> gTrafficFunctionMap;$/;"	v
+neighbor	traffic.cpp	/^int neighbor( int source, int total_nodes )$/;"	f
+randperm	traffic.cpp	/^int randperm( int source, int total_nodes )$/;"	f
+shuffle	traffic.cpp	/^int shuffle( int source, int total_nodes )$/;"	f
+src_dest_bin	traffic.cpp	/^void src_dest_bin( int source, int dest, int lg )$/;"	f
+tornado	traffic.cpp	/^int tornado( int source, int total_nodes )$/;"	f
+transpose	traffic.cpp	/^int transpose( int source, int total_nodes )$/;"	f
+uniform	traffic.cpp	/^int uniform( int source, int total_nodes )$/;"	f
+_TRAFFIC_HPP_	traffic.hpp	2;"	d
+tTrafficFunction	traffic.hpp	/^typedef int (*tTrafficFunction)( int, int );$/;"	t
+DEBUG	trafficmanager.cpp	12;"	d	file:
+DISPLAY_HOP_DIST	trafficmanager.cpp	/^int DISPLAY_HOP_DIST     = 1;    \/\/ distribution of hop counts$/;"	v
+DISPLAY_LAT_DIST	trafficmanager.cpp	/^int DISPLAY_LAT_DIST     = 1; \/\/ distribution of packet latencies$/;"	v
+DISPLAY_PAIR_LATENCY	trafficmanager.cpp	/^int DISPLAY_PAIR_LATENCY = 0;    \/\/ avg. latency for each s-d pair$/;"	v
+IcntInitPerGrid	trafficmanager.cpp	/^void TrafficManager::IcntInitPerGrid  (int time)$/;"	f	class:TrafficManager
+MATLAB_OUTPUT	trafficmanager.cpp	/^int MATLAB_OUTPUT        = 0;    \/\/ output data in MATLAB friendly format$/;"	v
+SetDrainState	trafficmanager.cpp	/^void TrafficManager::SetDrainState( )$/;"	f	class:TrafficManager
+ShowOveralStat	trafficmanager.cpp	/^void TrafficManager::ShowOveralStat( )$/;"	f	class:TrafficManager
+ShowStats	trafficmanager.cpp	/^void  TrafficManager::ShowStats() $/;"	f	class:TrafficManager
+TrafficManager	trafficmanager.cpp	/^TrafficManager::TrafficManager( const Configuration &config, Network *net , int u_id)$/;"	f	class:TrafficManager
+_ClassInject	trafficmanager.cpp	/^void TrafficManager::_ClassInject( )$/;"	f	class:TrafficManager
+_ClearStats	trafficmanager.cpp	/^void TrafficManager::_ClearStats( )$/;"	f	class:TrafficManager
+_ComputeAccepted	trafficmanager.cpp	/^int TrafficManager::_ComputeAccepted( double *avg, double *min ) const $/;"	f	class:TrafficManager
+_DisplayRemaining	trafficmanager.cpp	/^void TrafficManager::_DisplayRemaining( ) const $/;"	f	class:TrafficManager
+_FirstStep	trafficmanager.cpp	/^void TrafficManager::_FirstStep( )$/;"	f	class:TrafficManager
+_GeneratePacket	trafficmanager.cpp	/^void TrafficManager::_GeneratePacket( int source, int psize \/*# of flits*\/ , $/;"	f	class:TrafficManager
+_IssuePacket	trafficmanager.cpp	/^int TrafficManager::_IssuePacket( int source, int cl ) const$/;"	f	class:TrafficManager
+_NewFlit	trafficmanager.cpp	/^Flit *TrafficManager::_NewFlit( )$/;"	f	class:TrafficManager
+_PacketsOutstanding	trafficmanager.cpp	/^bool TrafficManager::_PacketsOutstanding( ) const$/;"	f	class:TrafficManager
+_ReadROB	trafficmanager.cpp	/^Flit *TrafficManager::_ReadROB( int dest )$/;"	f	class:TrafficManager
+_RetireFlit	trafficmanager.cpp	/^void TrafficManager::_RetireFlit( Flit *f, int dest )$/;"	f	class:TrafficManager
+_SingleSim	trafficmanager.cpp	/^bool TrafficManager::_SingleSim( )$/;"	f	class:TrafficManager
+_Step	trafficmanager.cpp	/^void TrafficManager::_Step( )$/;"	f	class:TrafficManager
+_VOQInject	trafficmanager.cpp	/^void TrafficManager::_VOQInject( )$/;"	f	class:TrafficManager
+~TrafficManager	trafficmanager.cpp	/^TrafficManager::~TrafficManager( )$/;"	f	class:TrafficManager
+TrafficManager	trafficmanager.hpp	/^class TrafficManager : public Module {$/;"	c
+_TRAFFICMANAGER_HPP_	trafficmanager.hpp	2;"	d
+_accepted_packets	trafficmanager.hpp	/^   Stats **_accepted_packets;$/;"	m	class:TrafficManager
+_active_list	trafficmanager.hpp	/^   list<int>    *_active_list;$/;"	m	class:TrafficManager
+_active_vc	trafficmanager.hpp	/^   bool         **_active_vc;$/;"	m	class:TrafficManager
+_buf_states	trafficmanager.hpp	/^   BufferState **_buf_states;$/;"	m	class:TrafficManager
+_classes	trafficmanager.hpp	/^   int       _classes;$/;"	m	class:TrafficManager
+_cur_id	trafficmanager.hpp	/^   int _cur_id;$/;"	m	class:TrafficManager
+_dests	trafficmanager.hpp	/^   int _dests;$/;"	m	class:TrafficManager
+_drain_time	trafficmanager.hpp	/^   int   _drain_time;$/;"	m	class:TrafficManager
+_empty_network	trafficmanager.hpp	/^   bool          _empty_network;$/;"	m	class:TrafficManager
+_flit_timing	trafficmanager.hpp	/^   bool  _flit_timing;$/;"	m	class:TrafficManager
+_free_flits	trafficmanager.hpp	/^   list<Flit *> _free_flits;$/;"	m	class:TrafficManager
+_hop_stats	trafficmanager.hpp	/^   Stats *_hop_stats;$/;"	m	class:TrafficManager
+_in_flight	trafficmanager.hpp	/^   map<int,bool> _in_flight;$/;"	m	class:TrafficManager
+_include_queuing	trafficmanager.hpp	/^   int   _include_queuing;$/;"	m	class:TrafficManager
+_inject_sqn	trafficmanager.hpp	/^   int                    **_inject_sqn;$/;"	m	class:TrafficManager
+_injection_process	trafficmanager.hpp	/^   tInjectionProcess _injection_process;$/;"	m	class:TrafficManager
+_internal_speedup	trafficmanager.hpp	/^   float _internal_speedup;$/;"	m	class:TrafficManager
+_latency_stats	trafficmanager.hpp	/^   Stats **_latency_stats;     $/;"	m	class:TrafficManager
+_latency_thres	trafficmanager.hpp	/^   double _latency_thres;$/;"	m	class:TrafficManager
+_latest_packet	trafficmanager.hpp	/^   int   **_latest_packet;$/;"	m	class:TrafficManager
+_load	trafficmanager.hpp	/^   float _load;$/;"	m	class:TrafficManager
+_max_samples	trafficmanager.hpp	/^   int   _max_samples;$/;"	m	class:TrafficManager
+_measured_in_flight	trafficmanager.hpp	/^   int           _measured_in_flight;$/;"	m	class:TrafficManager
+_net	trafficmanager.hpp	/^   Network *_net;$/;"	m	class:TrafficManager
+_overall_accepted	trafficmanager.hpp	/^   Stats *_overall_accepted;$/;"	m	class:TrafficManager
+_overall_accepted_min	trafficmanager.hpp	/^   Stats *_overall_accepted_min;$/;"	m	class:TrafficManager
+_overall_latency	trafficmanager.hpp	/^   Stats **_overall_latency;$/;"	m	class:TrafficManager
+_packet_size	trafficmanager.hpp	/^   int   _packet_size;$/;"	m	class:TrafficManager
+_pair_latency	trafficmanager.hpp	/^   Stats **_pair_latency;$/;"	m	class:TrafficManager
+_partial_internal_cycles	trafficmanager.hpp	/^   float _partial_internal_cycles;$/;"	m	class:TrafficManager
+_partial_packets	trafficmanager.hpp	/^   list<Flit *> **_partial_packets;$/;"	m	class:TrafficManager
+_pri_type	trafficmanager.hpp	/^   ePriority _pri_type;$/;"	m	class:TrafficManager
+_qdrained	trafficmanager.hpp	/^   bool         **_qdrained;$/;"	m	class:TrafficManager
+_qtime	trafficmanager.hpp	/^   int          **_qtime;$/;"	m	class:TrafficManager
+_reorder	trafficmanager.hpp	/^   bool _reorder;$/;"	m	class:TrafficManager
+_rob	trafficmanager.hpp	/^   priority_queue<Flit *, vector<Flit *>, flitp_compare> **_rob;$/;"	m	class:TrafficManager
+_rob_latency	trafficmanager.hpp	/^   Stats *_rob_latency;$/;"	m	class:TrafficManager
+_rob_pri	trafficmanager.hpp	/^   int                     *_rob_pri;$/;"	m	class:TrafficManager
+_rob_size	trafficmanager.hpp	/^   Stats *_rob_size;$/;"	m	class:TrafficManager
+_rob_sqn	trafficmanager.hpp	/^   int                    **_rob_sqn;$/;"	m	class:TrafficManager
+_rob_sqn_max	trafficmanager.hpp	/^   int                    **_rob_sqn_max;$/;"	m	class:TrafficManager
+_routing_function	trafficmanager.hpp	/^   tRoutingFunction  _routing_function;$/;"	m	class:TrafficManager
+_sample_period	trafficmanager.hpp	/^   int   _sample_period;$/;"	m	class:TrafficManager
+_sim_mode	trafficmanager.hpp	/^   eSimMode _sim_mode;$/;"	m	class:TrafficManager
+_sim_state	trafficmanager.hpp	/^   eSimState _sim_state;$/;"	m	class:TrafficManager
+_sources	trafficmanager.hpp	/^   int _sources;$/;"	m	class:TrafficManager
+_split_packets	trafficmanager.hpp	/^   int          _split_packets; $/;"	m	class:TrafficManager
+_time	trafficmanager.hpp	/^   int _time;$/;"	m	class:TrafficManager
+_total_in_flight	trafficmanager.hpp	/^   int           _total_in_flight;$/;"	m	class:TrafficManager
+_total_sims	trafficmanager.hpp	/^   int   _total_sims;$/;"	m	class:TrafficManager
+_traffic_function	trafficmanager.hpp	/^   tTrafficFunction  _traffic_function;$/;"	m	class:TrafficManager
+_use_lagging	trafficmanager.hpp	/^   bool         _use_lagging;$/;"	m	class:TrafficManager
+_used_flits	trafficmanager.hpp	/^   list<Flit *> _used_flits;$/;"	m	class:TrafficManager
+_voq	trafficmanager.hpp	/^   list<Flit *> **_voq;$/;"	m	class:TrafficManager
+_voqing	trafficmanager.hpp	/^   int          _voqing;$/;"	m	class:TrafficManager
+_warmup_periods	trafficmanager.hpp	/^   int   _warmup_periods;$/;"	m	class:TrafficManager
+_warmup_time	trafficmanager.hpp	/^   int   _warmup_time;$/;"	m	class:TrafficManager
+age_based	trafficmanager.hpp	/^      class_based, age_based, none$/;"	e	enum:TrafficManager::ePriority
+class_based	trafficmanager.hpp	/^      class_based, age_based, none$/;"	e	enum:TrafficManager::ePriority
+credit_return_queue	trafficmanager.hpp	/^   queue<Flit *> * credit_return_queue; \/\/keeps flits that their corresponding credits are not sent yet$/;"	m	class:TrafficManager
+done	trafficmanager.hpp	/^      warming_up, running, draining, done$/;"	e	enum:TrafficManager::eSimState
+draining	trafficmanager.hpp	/^      warming_up, running, draining, done$/;"	e	enum:TrafficManager::eSimState
+ePriority	trafficmanager.hpp	/^   enum ePriority {$/;"	g	class:TrafficManager
+eSimMode	trafficmanager.hpp	/^   enum eSimMode {$/;"	g	class:TrafficManager
+eSimState	trafficmanager.hpp	/^   enum eSimState {$/;"	g	class:TrafficManager
+flitp_compare	trafficmanager.hpp	/^class flitp_compare {$/;"	c
+latency	trafficmanager.hpp	/^      latency, throughput$/;"	e	enum:TrafficManager::eSimMode
+none	trafficmanager.hpp	/^      class_based, age_based, none$/;"	e	enum:TrafficManager::ePriority
+operator ()	trafficmanager.hpp	/^   bool operator()( const Flit *a, const Flit *b ) const {$/;"	f	class:flitp_compare
+running	trafficmanager.hpp	/^      warming_up, running, draining, done$/;"	e	enum:TrafficManager::eSimState
+throughput	trafficmanager.hpp	/^      latency, throughput$/;"	e	enum:TrafficManager::eSimMode
+uid	trafficmanager.hpp	/^   int uid; \/\/ this traffic manger's ID useful when we have more than 1 traffic objects$/;"	m	class:TrafficManager
+warming_up	trafficmanager.hpp	/^      warming_up, running, draining, done$/;"	e	enum:TrafficManager::eSimState
+AddFlit	vc.cpp	/^bool VC::AddFlit( Flit *f )$/;"	f	class:VC
+AdvanceTime	vc.cpp	/^void VC::AdvanceTime( )$/;"	f	class:VC
+Display	vc.cpp	/^void VC::Display( ) const$/;"	f	class:VC
+Empty	vc.cpp	/^bool VC::Empty( ) const$/;"	f	class:VC
+FrontFlit	vc.cpp	/^Flit *VC::FrontFlit( )$/;"	f	class:VC
+GetOutputPort	vc.cpp	/^int VC::GetOutputPort( ) const$/;"	f	class:VC
+GetOutputVC	vc.cpp	/^int VC::GetOutputVC( ) const$/;"	f	class:VC
+GetPriority	vc.cpp	/^int VC::GetPriority( ) const$/;"	f	class:VC
+GetRouteSet	vc.cpp	/^const OutputSet *VC::GetRouteSet( ) const$/;"	f	class:VC
+GetState	vc.cpp	/^VC::eVCState VC::GetState( ) const$/;"	f	class:VC
+GetStateTime	vc.cpp	/^int VC::GetStateTime( ) const$/;"	f	class:VC
+IsWatched	vc.cpp	/^bool VC::IsWatched( ) const$/;"	f	class:VC
+RemoveFlit	vc.cpp	/^Flit *VC::RemoveFlit( )$/;"	f	class:VC
+Route	vc.cpp	/^void VC::Route( tRoutingFunction rf, const Router* router, const Flit* f, int in_channel )$/;"	f	class:VC
+SetOutput	vc.cpp	/^void VC::SetOutput( int port, int vc )$/;"	f	class:VC
+SetState	vc.cpp	/^void VC::SetState( eVCState s )$/;"	f	class:VC
+SetWatch	vc.cpp	/^void VC::SetWatch( bool watch )$/;"	f	class:VC
+VC	vc.cpp	/^VC::VC( const Configuration& config, int outputs, $/;"	f	class:VC
+_Init	vc.cpp	/^void VC::_Init( const Configuration& config, int outputs )$/;"	f	class:VC
+init	vc.cpp	/^void VC::init( const Configuration& config, int outputs ) $/;"	f	class:VC
+~VC	vc.cpp	/^VC::~VC( )$/;"	f	class:VC
+VC	vc.hpp	/^    VC() : Module() {}$/;"	f	class:VC
+VC	vc.hpp	/^class VC : public Module {$/;"	c
+_VC_HPP_	vc.hpp	2;"	d
+_active_cycles	vc.hpp	/^   int _active_cycles;$/;"	m	class:VC
+_buffer	vc.hpp	/^   queue<Flit *> _buffer;$/;"	m	class:VC
+_idle_cycles	vc.hpp	/^   int _idle_cycles;$/;"	m	class:VC
+_occupied_cnt	vc.hpp	/^   int _occupied_cnt;$/;"	m	class:VC
+_out_port	vc.hpp	/^   int _out_port, _out_vc;$/;"	m	class:VC
+_out_vc	vc.hpp	/^   int _out_port, _out_vc;$/;"	m	class:VC
+_pri	vc.hpp	/^   int _pri;$/;"	m	class:VC
+_route_set	vc.hpp	/^   OutputSet *_route_set;$/;"	m	class:VC
+_size	vc.hpp	/^   int _size;$/;"	m	class:VC
+_state	vc.hpp	/^   eVCState _state;$/;"	m	class:VC
+_state_time	vc.hpp	/^   int      _state_time;$/;"	m	class:VC
+_total_cycles	vc.hpp	/^   int _total_cycles;$/;"	m	class:VC
+_vc_alloc_cycles	vc.hpp	/^   int _vc_alloc_cycles;$/;"	m	class:VC
+_watched	vc.hpp	/^   bool _watched;$/;"	m	class:VC
+active	vc.hpp	/^      idle, routing, vc_alloc, active$/;"	e	enum:VC::eVCState
+eVCState	vc.hpp	/^   enum eVCState {$/;"	g	class:VC
+idle	vc.hpp	/^      idle, routing, vc_alloc, active$/;"	e	enum:VC::eVCState
+routing	vc.hpp	/^      idle, routing, vc_alloc, active$/;"	e	enum:VC::eVCState
+vc_alloc	vc.hpp	/^      idle, routing, vc_alloc, active$/;"	e	enum:VC::eVCState
+Allocate	wavefront.cpp	/^void Wavefront::Allocate( )$/;"	f	class:Wavefront
+Wavefront	wavefront.cpp	/^Wavefront::Wavefront( const Configuration &config,$/;"	f	class:Wavefront
+~Wavefront	wavefront.cpp	/^Wavefront::~Wavefront( )$/;"	f	class:Wavefront
+Wavefront	wavefront.hpp	/^class Wavefront : public DenseAllocator {$/;"	c
+_WAVEFRONT_HPP_	wavefront.hpp	2;"	d
+_pri	wavefront.hpp	/^   int _pri;$/;"	m	class:Wavefront
+_square	wavefront.hpp	/^   int _square;$/;"	m	class:Wavefront
